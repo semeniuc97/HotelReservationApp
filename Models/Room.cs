@@ -11,6 +11,6 @@ namespace Models
         public string Number { get; set; }
         public string Capability { get; set; }
         public string ComfortLevel { get; set; }
-
+        public string HotelId { get; set; }
     }
 }

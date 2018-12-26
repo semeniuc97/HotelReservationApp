@@ -126,6 +126,7 @@
             // 
             // textBoxInputHotelId
             // 
+            this.textBoxInputHotelId.Enabled = false;
             this.textBoxInputHotelId.Location = new System.Drawing.Point(26, 134);
             this.textBoxInputHotelId.Name = "textBoxInputHotelId";
             this.textBoxInputHotelId.Size = new System.Drawing.Size(147, 20);
@@ -161,9 +162,9 @@
             this.labelInstruct.AutoSize = true;
             this.labelInstruct.Location = new System.Drawing.Point(23, 118);
             this.labelInstruct.Name = "labelInstruct";
-            this.labelInstruct.Size = new System.Drawing.Size(119, 13);
+            this.labelInstruct.Size = new System.Drawing.Size(125, 13);
             this.labelInstruct.TabIndex = 6;
-            this.labelInstruct.Text = "Input the Id of the Hotel";
+            this.labelInstruct.Text = "Select the Id of the Hotel";
             // 
             // buttonRefresh
             // 

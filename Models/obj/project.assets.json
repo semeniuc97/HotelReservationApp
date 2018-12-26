@@ -184,11 +184,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Users\\msemeniu\\Desktop\\Test\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\Models\\Models.csproj",
+      "projectPath": "C:\\Users\\msemeniu\\Desktop\\Test\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\msemeniu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\Models\\obj\\",
+      "outputPath": "C:\\Users\\msemeniu\\Desktop\\Test\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

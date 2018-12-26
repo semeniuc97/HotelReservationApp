@@ -1,6 +1,10 @@
-﻿using System;
+﻿using BusinessAccessLayer.Services;
+using DataAccessLayer;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -13,16 +17,13 @@ namespace HotelReservation
 {
     public partial class FormAddReservation : Form
     {
-        string connectionString;
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
+        UserRepository userRepository = new UserRepository(connectionString);
+        BookingRepository bookingRepository = new BookingRepository(connectionString);
         string roomId;
         public FormAddReservation()
         {
             InitializeComponent();
-        }
-        public FormAddReservation(string connectionString)
-        {
-            InitializeComponent();
-            this.connectionString = connectionString;
         }
         public string RoomId
         {
@@ -34,20 +35,13 @@ namespace HotelReservation
 
         private void FormAddReservation_Shown(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            listViewUsers.Items.Clear();
+            var allUsers = userRepository.GetAllUsers();
+            foreach (var user in allUsers)
             {
-                listViewUsers.Items.Clear();
-                SqlCommand command = new SqlCommand("Select * from Users; ", sqlConnection);
-                sqlConnection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    ListViewItem listViewUserRecord = new ListViewItem(reader["UserId"].ToString());
-                    listViewUserRecord.SubItems.Add(reader["UserName"].ToString());
-                    listViewUsers.Items.Add(listViewUserRecord);
-                }
-                reader.Close();
-                sqlConnection.Close();
+                ListViewItem listViewUserRecord = new ListViewItem(user.UserId);
+                listViewUserRecord.SubItems.Add(user.UserName);
+                listViewUsers.Items.Add(listViewUserRecord);
             }
         }
 
@@ -55,36 +49,50 @@ namespace HotelReservation
 
         private void buttonAddReservation_Click(object sender, EventArgs e)
         {
-            if (listViewUsers.SelectedItems.Count != 0)
+            if (ValidationService.ValidateBookingDates(dateTimePickerStart.Value, dateTimePickerEnd.Value))
             {
-                ListViewItem item = listViewUsers.SelectedItems[0];
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                if (listViewUsers.SelectedItems.Count != 0)
                 {
-                    try
+                    ListViewItem item = listViewUsers.SelectedItems[0];
+                    Booking booking = new Booking()
                     {
-                        SqlCommand command = new SqlCommand("Insert Into Bookings Values('" + dateTimePickerStart.Value.ToString("u") + "','" +
-                            dateTimePickerEnd.Value.ToString("u") + "','" + item.Text + "','" + roomId + "');", sqlConnection);
-                        sqlConnection.Open();
-                        command.ExecuteNonQuery();
-                        sqlConnection.Close();
-                        MessageBox.Show("New record has added");
-                        this.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                        StartDate = dateTimePickerStart.Value,
+                        EndDate = dateTimePickerEnd.Value,
+                        UserId = item.Text,
+                        RoomId = roomId
+                    };
+                    bookingRepository.AddBooking(booking);
+                    MessageBox.Show("New record has added");
+                    this.Close();
+                }
+                else
+                {
+                    labelError.Visible = true;
                 }
             }
             else
-            {
-                labelError.Visible = true;
-            }
+                labelDatesValidation.Visible = true;
+
         }
 
         private void listViewUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             labelError.Visible = false;
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            if (listViewUsers.SelectedItems.Count != 0)
+            {
+                ListViewItem item = listViewUsers.SelectedItems[0];
+                bookingRepository.CancelBooking(item.Text);
+                MessageBox.Show("The reservation has been canceled");
+                this.Close();
+            }
+            else
+            {
+                labelError.Visible = true;
+            }
 
         }
     }

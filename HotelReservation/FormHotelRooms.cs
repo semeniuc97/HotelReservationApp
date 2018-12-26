@@ -49,13 +49,13 @@ namespace HotelReservation
             listViewRoomReservation.Items.Clear();
 
             item = listViewHotelRooms.SelectedItems[0];
-            label2.Text = $"Room`s {item.SubItems[0].Text} reservations";
+            label2.Text = $"Room`s {item.SubItems[1].Text} reservations";
             GetBookings();
         }
 
         private void buttonManageRooms_Click(object sender, EventArgs e)
         {
-            FormManageRooms formManageRooms = new FormManageRooms(connectionString);
+            FormManageRooms formManageRooms = new FormManageRooms();
             formManageRooms.HotelId = hotelId;
             formManageRooms.Show();
         }
@@ -69,7 +69,6 @@ namespace HotelReservation
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             GetAllRooms();
-            GetBookings();
         }
 
         private void GetAllRooms()
@@ -92,7 +91,7 @@ namespace HotelReservation
         {
             if (listViewHotelRooms.SelectedItems.Count != 0)
             {
-            FormAddReservation formAddReservation = new FormAddReservation(connectionString);
+            FormAddReservation formAddReservation = new FormAddReservation();
             formAddReservation.RoomId = item.Text;
             formAddReservation.Show();
             }
@@ -111,13 +110,28 @@ namespace HotelReservation
                 var roomBookings = bookingRepository.GetBookingsDetailsByRoomId(roomId);
                 foreach(var booking in roomBookings)
                 {
-                    ListViewItem listViewItem = new ListViewItem(booking.UserName);
-                    listViewItem.SubItems.Add(booking.Email);
+                    ListViewItem listViewItem = new ListViewItem(booking.BookingId);
+                    listViewItem.SubItems.Add(booking.UserName);
                     listViewItem.SubItems.Add(booking.Price);
-                    listViewItem.SubItems.Add(booking.StartDate.ToString("u"));
-                    listViewItem.SubItems.Add(booking.EndDate.ToString("u"));
+                    listViewItem.SubItems.Add(booking.StartDate.ToShortDateString());
+                    listViewItem.SubItems.Add(booking.EndDate.ToShortDateString());
+                    listViewItem.SubItems.Add(booking.Email);
                     listViewRoomReservation.Items.Add(listViewItem);               
                 }
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            if (listViewRoomReservation.SelectedItems.Count != 0)
+            {
+                ListViewItem item = listViewRoomReservation.SelectedItems[0];
+                bookingRepository.CancelBooking(item.Text);
+                MessageBox.Show("The reservation has been canceled");
+            }
+            else
+            {
+                MessageBox.Show("Select the reservation!");
             }
         }
     }

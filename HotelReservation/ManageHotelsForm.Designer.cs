@@ -45,6 +45,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.comboBoxIsActive = new System.Windows.Forms.ComboBox();
             this.labelIsActive = new System.Windows.Forms.Label();
+            this.labelValidationMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxHotelName
@@ -231,12 +232,25 @@
             this.labelIsActive.Text = "Is Active";
             this.labelIsActive.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // labelValidationMessage
+            // 
+            this.labelValidationMessage.AutoSize = true;
+            this.labelValidationMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelValidationMessage.ForeColor = System.Drawing.Color.Red;
+            this.labelValidationMessage.Location = new System.Drawing.Point(139, 4);
+            this.labelValidationMessage.Name = "labelValidationMessage";
+            this.labelValidationMessage.Size = new System.Drawing.Size(166, 15);
+            this.labelValidationMessage.TabIndex = 34;
+            this.labelValidationMessage.Text = "Incorrect data!Write another...";
+            this.labelValidationMessage.Visible = false;
+            // 
             // ManageHotelsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(320, 340);
+            this.Controls.Add(this.labelValidationMessage);
             this.Controls.Add(this.comboBoxIsActive);
             this.Controls.Add(this.labelIsActive);
             this.Controls.Add(this.buttonAdd);
@@ -255,6 +269,7 @@
             this.Controls.Add(this.textBoxAdress);
             this.Controls.Add(this.textBoxHotelName);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "ManageHotelsForm";
             this.Text = "ManageHotelsForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManageHotelsForm_FormClosed);
@@ -284,5 +299,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ComboBox comboBoxIsActive;
         private System.Windows.Forms.Label labelIsActive;
+        private System.Windows.Forms.Label labelValidationMessage;
     }
 }

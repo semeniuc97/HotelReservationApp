@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation", "HotelReservation\HotelReservation.csproj", "{45ED449C-28C5-4C99-BBC3-63A9C5468025}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{106A2A4F-1D70-4DFE-A2E8-7B7D7DB4DC3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{106A2A4F-1D70-4DFE-A2E8-7B7D7DB4DC3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{389DC819-53E6-4708-9371-7C7222572680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{389DC819-53E6-4708-9371-7C7222572680}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessAccessLayer", "BusinessAccessLayer\BusinessAccessLayer.csproj", "{5D306F81-0D3E-4A03-BAB5-774E4C280180}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{389DC819-53E6-4708-9371-7C7222572680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{389DC819-53E6-4708-9371-7C7222572680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{389DC819-53E6-4708-9371-7C7222572680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

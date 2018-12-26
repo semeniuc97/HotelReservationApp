@@ -42,13 +42,14 @@
             this.listViewRoomReservation = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -141,9 +142,10 @@
             this.listViewRoomReservation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
             this.columnHeader10,
-            this.columnHeader7,
             this.columnHeader11,
-            this.columnHeader12});
+            this.columnHeader12,
+            this.columnHeader8,
+            this.columnHeader9});
             this.listViewRoomReservation.Location = new System.Drawing.Point(23, 49);
             this.listViewRoomReservation.Name = "listViewRoomReservation";
             this.listViewRoomReservation.Size = new System.Drawing.Size(336, 331);
@@ -153,30 +155,30 @@
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "User Name";
-            this.columnHeader6.Width = 67;
+            this.columnHeader6.Text = "Id";
+            this.columnHeader6.Width = 27;
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "Email";
-            this.columnHeader10.Width = 57;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.DisplayIndex = 4;
-            this.columnHeader7.Text = "Price";
+            this.columnHeader10.Text = "User Name";
+            this.columnHeader10.Width = 72;
             // 
             // columnHeader11
             // 
-            this.columnHeader11.DisplayIndex = 2;
-            this.columnHeader11.Text = "Start Date";
-            this.columnHeader11.Width = 77;
+            this.columnHeader11.Text = "Price";
             // 
             // columnHeader12
             // 
-            this.columnHeader12.DisplayIndex = 3;
-            this.columnHeader12.Text = "End Date";
-            this.columnHeader12.Width = 74;
+            this.columnHeader12.Text = "Start Date";
+            this.columnHeader12.Width = 61;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "End Date";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Email";
             // 
             // panel2
             // 
@@ -190,16 +192,16 @@
             this.panel2.Size = new System.Drawing.Size(383, 483);
             this.panel2.TabIndex = 3;
             // 
-            // label2
+            // buttonCancel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(64, 7);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(260, 39);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Room`s reservations";
+            this.buttonCancel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonCancel.Location = new System.Drawing.Point(226, 406);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(111, 41);
+            this.buttonCancel.TabIndex = 7;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonAdd
             // 
@@ -212,15 +214,16 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // buttonCancel
+            // label2
             // 
-            this.buttonCancel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCancel.Location = new System.Drawing.Point(226, 406);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(111, 41);
-            this.buttonCancel.TabIndex = 7;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(40, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(260, 39);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Room`s reservations";
             // 
             // FormHotelRooms
             // 
@@ -230,6 +233,7 @@
             this.ClientSize = new System.Drawing.Size(820, 517);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "FormHotelRooms";
             this.Text = "FormHotelRooms";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormHotelRooms_FormClosed);
@@ -259,10 +263,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Button buttonManageRooms;
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }

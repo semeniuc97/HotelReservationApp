@@ -32,34 +32,16 @@ namespace HotelReservation
         {
             GetAllHotels();
         }
+
         private void GetAllHotels()
         {
-            //using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            //{
-            //    listViewHotels.Items.Clear();
-            //    SqlCommand command = new SqlCommand("Select * from Hotels; ", sqlConnection);
-            //    sqlConnection.Open();
-            //    SqlDataReader reader = command.ExecuteReader();
-            //    while (reader.Read())
-            //    {
-            //        ListViewItem listViewItem = new ListViewItem(reader["HotelId"].ToString());
-            //        listViewItem.SubItems.Add(reader["HotelName"].ToString());
-            //        listViewItem.SubItems.Add(reader["FoundationYear"].ToString());
-            //        listViewItem.SubItems.Add(reader["Adress"].ToString());
-            //        listViewItem.SubItems.Add(reader["IsActive"].ToString());
-            //        listViewHotels.Items.Add(listViewItem);
-            //    }
-            //    reader.Close();
-            //    sqlConnection.Close();
-            //}
-            
                 listViewHotels.Items.Clear();
             var HotelsList = hotelRepository.GetHotels();
             foreach(var hotel in HotelsList)
             {
                 ListViewItem listViewItem = new ListViewItem(hotel.HotelId);
                 listViewItem.SubItems.Add(hotel.HotelName);
-                listViewItem.SubItems.Add(hotel.FoundationYear.ToString("u"));
+                listViewItem.SubItems.Add(hotel.FoundationYear.ToShortDateString());
                 listViewItem.SubItems.Add(hotel.Adress);
                 listViewItem.SubItems.Add(hotel.IsActive);
                 listViewHotels.Items.Add(listViewItem);

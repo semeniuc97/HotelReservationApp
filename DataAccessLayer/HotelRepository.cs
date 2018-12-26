@@ -30,7 +30,6 @@ namespace DataAccessLayer
                 {
                     Hotel hotel = new Hotel()
                     {
-
                         HotelId = reader["HotelId"].ToString(),
                         HotelName = reader["HotelName"].ToString(),
                         FoundationYear = Convert.ToDateTime(reader["FoundationYear"].ToString()),
@@ -90,16 +89,32 @@ namespace DataAccessLayer
             {
                 SqlCommand command = new SqlCommand($@"Update Hotels Set HotelName='{hotel.HotelName}',FoundationYear='{hotel.FoundationYear.ToString("u")}',
                                              Adress='{hotel.Adress}',IsActive='{hotel.IsActive}' where HotelId={hotel.HotelId}", sqlConnection);
-                //command.Parameters.Add(new SqlParameter("hotelId", hotel.HotelId));
-                //command.Parameters.Add(new SqlParameter("hotelName", hotel.HotelName));
-                //command.Parameters.Add(new SqlParameter("foundationYear",hotel.FoundationYear.ToString("u")));
-                //command.Parameters.Add(new SqlParameter("adress", hotel.Adress));
-                //command.Parameters.Add(new SqlParameter("isActive", hotel.IsActive));
+                //SqlCommand command = new SqlCommand($@"Update Hotels Set HotelName='@hotelName',FoundationYear='@foundationYear',
+                //                             Adress='@adress',IsActive='@isActive' where HotelId=@hotelId", sqlConnection);
+                //command.Parameters.Add(new SqlParameter("@hotelName", System.Data.SqlDbType.VarChar, 50)).Value = hotel.HotelName;
+                //command.Parameters.Add(new SqlParameter("@foundationYear", System.Data.SqlDbType.VarChar, 50)).Value = hotel.FoundationYear.ToString("u");
+                //command.Parameters.Add(new SqlParameter("@adress", System.Data.SqlDbType.VarChar, 50)).Value = hotel.Adress;
+                //command.Parameters.Add(new SqlParameter("@isActive", System.Data.SqlDbType.Bit)).Value = hotel.IsActive;
+                //command.Parameters.Add(new SqlParameter("@hotelId", System.Data.SqlDbType.Int)).Value = hotel.HotelId;
 
                 sqlConnection.Open();
                 command.ExecuteNonQuery();
                 sqlConnection.Close();
 
+            }
+        }
+        public void DeleteHotel(string hotelId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("Delete From Hotels Where HotelId=@hotelId;", sqlConnection))
+                {
+                    command.Parameters.Add(new SqlParameter("@hotelId", hotelId));
+
+                    sqlConnection.Open();
+                    command.ExecuteNonQuery();
+                    //sqlConnection.Close();
+                }
             }
         }
     }

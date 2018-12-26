@@ -36,8 +36,8 @@
             this.labelEndDate = new System.Windows.Forms.Label();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.buttonAddReservation = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.labelError = new System.Windows.Forms.Label();
+            this.labelDatesValidation = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dateTimePickerStart
@@ -101,22 +101,13 @@
             // buttonAddReservation
             // 
             this.buttonAddReservation.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddReservation.Location = new System.Drawing.Point(65, 167);
+            this.buttonAddReservation.Location = new System.Drawing.Point(50, 167);
             this.buttonAddReservation.Name = "buttonAddReservation";
-            this.buttonAddReservation.Size = new System.Drawing.Size(162, 40);
+            this.buttonAddReservation.Size = new System.Drawing.Size(177, 40);
             this.buttonAddReservation.TabIndex = 7;
-            this.buttonAddReservation.Text = "AddReservation";
+            this.buttonAddReservation.Text = "Add Reservation";
             this.buttonAddReservation.UseVisualStyleBackColor = true;
             this.buttonAddReservation.Click += new System.EventHandler(this.buttonAddReservation_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "label1";
             // 
             // labelError
             // 
@@ -129,20 +120,32 @@
             this.labelError.Text = "Error!Must choose the user!";
             this.labelError.Visible = false;
             // 
+            // labelDatesValidation
+            // 
+            this.labelDatesValidation.AutoSize = true;
+            this.labelDatesValidation.ForeColor = System.Drawing.Color.Red;
+            this.labelDatesValidation.Location = new System.Drawing.Point(79, 138);
+            this.labelDatesValidation.Name = "labelDatesValidation";
+            this.labelDatesValidation.Size = new System.Drawing.Size(139, 13);
+            this.labelDatesValidation.TabIndex = 10;
+            this.labelDatesValidation.Text = "Error!Select another dates...";
+            this.labelDatesValidation.Visible = false;
+            // 
             // FormAddReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(420, 241);
+            this.Controls.Add(this.labelDatesValidation);
             this.Controls.Add(this.labelError);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAddReservation);
             this.Controls.Add(this.labelStartDate);
             this.Controls.Add(this.labelEndDate);
             this.Controls.Add(this.listViewUsers);
             this.Controls.Add(this.dateTimePickerEnd);
             this.Controls.Add(this.dateTimePickerStart);
+            this.MaximizeBox = false;
             this.Name = "FormAddReservation";
             this.Text = "FormAddReservation";
             this.Shown += new System.EventHandler(this.FormAddReservation_Shown);
@@ -160,7 +163,7 @@
         private System.Windows.Forms.Label labelEndDate;
         private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.Button buttonAddReservation;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.Label labelDatesValidation;
     }
 }

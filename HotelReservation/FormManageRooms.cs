@@ -1,6 +1,10 @@
-﻿using System;
+﻿using BusinessAccessLayer.Services;
+using DataAccessLayer;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -13,7 +17,8 @@ namespace HotelReservation
 {
     public partial class FormManageRooms : Form
     {
-        string connectionString;
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
+        RoomRepository roomRepository = new RoomRepository(connectionString);
         private int hotelId;
 
         public int HotelId
@@ -29,14 +34,101 @@ namespace HotelReservation
             InitializeComponent();
         }
 
-        public FormManageRooms(string connectionString)
-        {
-            InitializeComponent();
-            this.connectionString = connectionString;
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+        }
+
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (ValidationService.ValidateIsNumber(textBoxNumber.Text) && ValidationService.ValidateIsNumber(textBoxCapability.Text) &&
+                ValidationService.ValidateIsPrice(textBoxPrice.Text))
+            {
+                var newRoom = new Room()
+            {
+                Number = textBoxNumber.Text,
+                Price = textBoxPrice.Text,
+                Capability = textBoxCapability.Text,
+                ComfortLevel = comboBoxComfortLvl.Text,
+                HotelId = hotelId.ToString()
+            };
+            roomRepository.AddRoom(newRoom);
+            MessageBox.Show("New record has added");
+            this.Close();
+            }
+            else
+                labelValidationMessage.Visible = true;
+        }
+
+        private void FormManageRooms_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (ValidationService.ValidateIsNumber(textBoxCapability.Text))
+            {
+
+                roomRepository.DeleteRoomById(textBoxCapability.Text);
+                MessageBox.Show("The record has been deleted!");
+                this.Close();
+            }
+            else
+                labelValidationMessage.Visible = true;
+
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            if (ValidationService.ValidateIsNumber(textBoxNumber.Text) && ValidationService.ValidateIsNumber(textBoxCapability.Text) &&
+                ValidationService.ValidateIsPrice(textBoxPrice.Text))
+            {
+                var room = new Room()
+                {
+                    Number = textBoxNumber.Text,
+                    Price = textBoxPrice.Text,
+                    Capability = textBoxCapability.Text,
+                    ComfortLevel = comboBoxComfortLvl.Text
+                };
+                roomRepository.UpdateRoom(room);
+                MessageBox.Show("The record has been updated!");
+                this.Close();
+            }
+            else
+                labelValidationMessage.Visible = true;
+        }
+
+        private void textBoxNumber_TextChanged(object sender, EventArgs e)
+        {
+            buttonFind.Enabled = true;
+        }
+
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+
+            if (ValidationService.ValidateIsNumber(textBoxNumber.Text))
+            {
+                textBoxPrice.ReadOnly = false;
+                textBoxCapability.ReadOnly = false;
+                comboBoxComfortLvl.Enabled = true;
+                buttonUpdate.Enabled = true;
+
+                var book = roomRepository.FindRoomByRoomNumber(textBoxNumber.Text);
+                textBoxPrice.Text = book.Price;
+                textBoxCapability.Text = book.Capability;
+                comboBoxComfortLvl.Text = book.ComfortLevel;
+
+            }
+            else
+                labelValidationMessage.Visible = true;
+        }
+
+        private void FormManageRooms_Load(object sender, EventArgs e)
+        {
+            this.comboBoxComfortLvl.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
@@ -100,117 +192,6 @@ namespace HotelReservation
             buttonAdd.Visible = true;
             buttonAdd.Location = new Point(130, 164);
             labelCapability.Text = "Capability";
-
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand("Insert into Rooms(Number,Price,Capability,ComfortLevel,HotelId" +
-                        ") Values('"+ textBoxNumber.Text + "','" + textBoxPrice.Text + "'," +
-                       "'" + textBoxCapability.Text + "','" + comboBoxComfortLvl.SelectedItem.ToString() + "','" + hotelId.ToString() + "');", sqlConnection);
-                    sqlConnection.Open();
-                    command.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    MessageBox.Show("New record has added");
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void FormManageRooms_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand("Delete From Rooms Where RoomId=" + textBoxCapability.Text, sqlConnection);
-                    sqlConnection.Open();
-                    command.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    MessageBox.Show("The record has been deleted!");
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand("Update Rooms Set Number='" + textBoxNumber.Text + "',Price='" + textBoxPrice.Text +
-                        "',Capability='" + textBoxCapability.Text +"',ComfortLevel='"+ comboBoxComfortLvl.Text+"' where Number=" + textBoxNumber.Text + ";", sqlConnection);
-                    sqlConnection.Open();
-                    command.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    MessageBox.Show("The record has been updated!");
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void textBoxNumber_TextChanged(object sender, EventArgs e)
-        {
-            buttonFind.Enabled = true;
-        }
-
-        private void buttonFind_Click(object sender, EventArgs e)
-        {
-            textBoxPrice.ReadOnly = false;
-            textBoxCapability.ReadOnly = false;
-            comboBoxComfortLvl.Enabled = true;
-            buttonUpdate.Enabled = true;
-            
-
-            int num;
-            bool isNumeric = int.TryParse(textBoxNumber.Text, out num);
-            if (textBoxNumber.Text != "" && isNumeric)
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-                {
-                    SqlCommand command = new SqlCommand("Select * from Rooms Where Number=" + textBoxNumber.Text + ";", sqlConnection);
-                    sqlConnection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        textBoxPrice.Text = reader["Price"].ToString();
-                        textBoxCapability.Text = reader["Capability"].ToString();
-                        comboBoxComfortLvl.Text = reader["ComfortLevel"].ToString();
-                    }
-                    reader.Close();
-                    sqlConnection.Close();
-                }
-            }
-            else
-                MessageBox.Show("Input the id!");
-        }
-
-        private void FormManageRooms_Load(object sender, EventArgs e)
-        {
-            this.comboBoxComfortLvl.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
     }

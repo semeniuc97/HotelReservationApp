@@ -43,6 +43,7 @@
             this.textBoxCapability = new System.Windows.Forms.TextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.comboBoxComfortLvl = new System.Windows.Forms.ComboBox();
+            this.labelValidationMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -211,12 +212,25 @@
             this.comboBoxComfortLvl.TabIndex = 31;
             this.comboBoxComfortLvl.Text = "2";
             // 
+            // labelValidationMessage
+            // 
+            this.labelValidationMessage.AutoSize = true;
+            this.labelValidationMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelValidationMessage.ForeColor = System.Drawing.Color.Red;
+            this.labelValidationMessage.Location = new System.Drawing.Point(114, 5);
+            this.labelValidationMessage.Name = "labelValidationMessage";
+            this.labelValidationMessage.Size = new System.Drawing.Size(166, 15);
+            this.labelValidationMessage.TabIndex = 35;
+            this.labelValidationMessage.Text = "Incorrect data!Write another...";
+            this.labelValidationMessage.Visible = false;
+            // 
             // FormManageRooms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(289, 303);
+            this.Controls.Add(this.labelValidationMessage);
             this.Controls.Add(this.comboBoxComfortLvl);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonUpdate);
@@ -232,6 +246,7 @@
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.textBoxCapability);
             this.Controls.Add(this.textBoxPrice);
+            this.MaximizeBox = false;
             this.Name = "FormManageRooms";
             this.Text = "FormManageRooms";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormManageRooms_FormClosed);
@@ -259,5 +274,6 @@
         private System.Windows.Forms.TextBox textBoxCapability;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.ComboBox comboBoxComfortLvl;
+        private System.Windows.Forms.Label labelValidationMessage;
     }
 }

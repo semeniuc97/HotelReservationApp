@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessAccessLayer.Services;
 using DataAccessLayer;
 using Models;
 
@@ -42,10 +43,11 @@ namespace HotelReservation
             buttonUpdate.Enabled = true;
             comboBoxIsActive.Enabled = true;
 
-            int num;
-            bool isNumeric = int.TryParse(textBoxFyndById.Text, out num);
-            if (textBoxFyndById.Text != "" && isNumeric)
+            //int num;
+            //bool isNumeric = int.TryParse(textBoxFyndById.Text, out num);
+            if (ValidationService.ValidateIsNumber(textBoxFyndById.Text))
             {
+
                 var hotel = hotelRepository.FindHotelById(textBoxFyndById.Text);
                 textBoxHotelName.Text = hotel.HotelName;
                 textBoxAdress.Text = hotel.Adress;
@@ -53,41 +55,28 @@ namespace HotelReservation
                 comboBoxIsActive.Text = hotel.IsActive;
             }
             else
-                MessageBox.Show("Input the id!");
+                labelValidationMessage.Visible = true;
         }
 
 
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            //using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        var foundationYear = dateTimePickerFYear.Value;
-            //        SqlCommand command = new SqlCommand("Insert into Hotels(HotelName,Adress,FoundationYear,IsActive) Values(" + "'" + textBoxHotelName.Text + "'" + "," +
-            //           "'" + textBoxAdress.Text + "'" + "," + "'" + foundationYear.ToString("u") + "','" + comboBoxIsActive.Text + "');", sqlConnection);
-            //        sqlConnection.Open();
-            //        command.ExecuteNonQuery();
-            //        sqlConnection.Close();
-            //        MessageBox.Show("New record has added");
-            //        this.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-            var hotel = new Hotel()
+            if (ValidationService.ValidateHotelName(textBoxHotelName.Text) && ValidationService.ValidateFoundationYear(dateTimePickerFYear.Value))
             {
-                HotelName = textBoxHotelName.Text,
-                Adress = textBoxAdress.Text,
-                FoundationYear = dateTimePickerFYear.Value,
-                IsActive = comboBoxIsActive.Text
-            };
-            hotelRepository.AddHotel(hotel);
-            MessageBox.Show("New record has been added");
-            this.Close();
+                var hotel = new Hotel()
+                {
+                    HotelName = textBoxHotelName.Text,
+                    Adress = textBoxAdress.Text,
+                    FoundationYear = dateTimePickerFYear.Value,
+                    IsActive = comboBoxIsActive.Text
+                };
+                hotelRepository.AddHotel(hotel);
+                MessageBox.Show("New record has been added");
+                this.Close();
+            }
+            else
+                labelValidationMessage.Visible = true;
 
         }
 
@@ -98,23 +87,14 @@ namespace HotelReservation
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            if (ValidationService.ValidateIsNumber(textBoxFyndById.Text))
             {
-                try
-                {
-                    SqlCommand command = new SqlCommand("Delete From Hotels Where HotelId=" + textBoxAdress.Text, sqlConnection);
-                    sqlConnection.Open();
-                    command.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    MessageBox.Show("The record has been deleted!");
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                hotelRepository.DeleteHotel(textBoxAdress.Text);
+                MessageBox.Show("The record has been deleted!");
+                this.Close();
             }
-
+            else
+                labelValidationMessage.Visible = true;
         }
 
         private void textBoxFyndById_TextChanged(object sender, EventArgs e)
@@ -124,35 +104,24 @@ namespace HotelReservation
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            //using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        var foundationYear = dateTimePickerFYear.Value;
-            //        SqlCommand command = new SqlCommand("Update Hotels Set HotelName='" + textBoxHotelName.Text + "',Adress='" + textBoxAdress.Text +
-            //            "',FoundationYear='" + foundationYear + "','IsActive=" + comboBoxIsActive.Text + "' where HotelId=" + textBoxFyndById.Text + ";", sqlConnection);
-            //        sqlConnection.Open();
-            //        command.ExecuteNonQuery();
-            //        sqlConnection.Close();
-            //        MessageBox.Show("The record has been updated!");
-            //        this.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-            var hotel = new Hotel()
+            if (ValidationService.ValidateHotelName(textBoxHotelName.Text) && ValidationService.ValidateIsNumber(textBoxFyndById.Text) && 
+                ValidationService.ValidateFoundationYear(dateTimePickerFYear.Value))
             {
-                HotelId = textBoxFyndById.Text,
-                HotelName = textBoxHotelName.Text,
-                Adress = textBoxAdress.Text,
-                FoundationYear=dateTimePickerFYear.Value,
-                IsActive=comboBoxIsActive.Text
-            };
-            hotelRepository.UpdateHotel(hotel);
-            MessageBox.Show("The record has been updated!");
-            this.Close();
+                var hotel = new Hotel()
+                {
+                    HotelId = textBoxFyndById.Text,
+                    HotelName = textBoxHotelName.Text,
+                    Adress = textBoxAdress.Text,
+                    FoundationYear = dateTimePickerFYear.Value,
+                    IsActive = comboBoxIsActive.Text
+                };
+                hotelRepository.UpdateHotel(hotel);
+                MessageBox.Show("The record has been updated!");
+                this.Close();
+            }
+            else
+                labelValidationMessage.Visible = true;
+
         }
 
         private void ManageHotelsForm_Load(object sender, EventArgs e)
@@ -201,8 +170,9 @@ namespace HotelReservation
             textBoxAdress.ReadOnly = true;
             buttonUpdate.Enabled = false;
             buttonFind.Enabled = false;
-            labelIsActive.Enabled = false;
             comboBoxIsActive.Enabled = false;
+            comboBoxIsActive.Visible = true;
+            labelIsActive.Visible = true;
 
         }
 
