@@ -88,5 +88,12 @@ namespace HotelReservation
         {
             GetAllHotels();
         }
+
+        private void buttonRoomsRatings_Click(object sender, EventArgs e)
+        {
+            FormHotelRating formHotelRating = new FormHotelRating();
+            this.Close();
+            formHotelRating.Show();
+        }
     }
 }
