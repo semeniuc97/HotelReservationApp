@@ -6,10 +6,10 @@ namespace Models
 {
    public class BookingDetails
     {
-        public string BookingId { get; set; }
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        public string Price { get; set; }
+        public double Price { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }

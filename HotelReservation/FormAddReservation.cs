@@ -17,15 +17,16 @@ namespace HotelReservation
 {
     public partial class FormAddReservation : Form
     {
+        BookingService bookingService = new BookingService();
         static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
         UserRepository userRepository = new UserRepository(connectionString);
         BookingRepository bookingRepository = new BookingRepository(connectionString);
-        string roomId;
+        int roomId;
         public FormAddReservation()
         {
             InitializeComponent();
         }
-        public string RoomId
+        public int RoomId
         {
             set
             {
@@ -39,7 +40,7 @@ namespace HotelReservation
             var allUsers = userRepository.GetAllUsers();
             foreach (var user in allUsers)
             {
-                ListViewItem listViewUserRecord = new ListViewItem(user.UserId);
+                ListViewItem listViewUserRecord = new ListViewItem(user.Id.ToString());
                 listViewUserRecord.SubItems.Add(user.UserName);
                 listViewUsers.Items.Add(listViewUserRecord);
             }
@@ -49,6 +50,7 @@ namespace HotelReservation
 
         private void buttonAddReservation_Click(object sender, EventArgs e)
         {
+            bookingService.GetBookingDatesRange(dateTimePickerStart.Value, dateTimePickerEnd.Value);
             if (ValidationService.ValidateBookingDates(dateTimePickerStart.Value, dateTimePickerEnd.Value))
             {
                 if (listViewUsers.SelectedItems.Count != 0)
@@ -58,7 +60,7 @@ namespace HotelReservation
                     {
                         StartDate = dateTimePickerStart.Value,
                         EndDate = dateTimePickerEnd.Value,
-                        UserId = item.Text,
+                        UserId = Convert.ToInt32(item.Text),
                         RoomId = roomId
                     };
                     bookingRepository.AddBooking(booking);

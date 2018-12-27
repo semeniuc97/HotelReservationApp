@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{389DC819-53E6-4708-9371-7C7222572680}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessAccessLayer", "BusinessAccessLayer\BusinessAccessLayer.csproj", "{5D306F81-0D3E-4A03-BAB5-774E4C280180}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessAccessLayer", "BusinessAccessLayer\BusinessAccessLayer.csproj", "{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{389DC819-53E6-4708-9371-7C7222572680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{389DC819-53E6-4708-9371-7C7222572680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{389DC819-53E6-4708-9371-7C7222572680}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D306F81-0D3E-4A03-BAB5-774E4C280180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

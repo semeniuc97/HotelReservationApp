@@ -6,11 +6,11 @@ namespace Models
 {
     public class Room
     {
-        public string RoomId { get; set; }
-        public string Price { get; set; }
-        public string Number { get; set; }
-        public string Capability { get; set; }
-        public string ComfortLevel { get; set; }
-        public string HotelId { get; set; }
+        public int Id { get; set; }
+        public double Price { get; set; }
+        public int Number { get; set; }
+        public int Capability { get; set; }
+        public int ComfortLevel { get; set; }
+        public int HotelId { get; set; }
     }
 }

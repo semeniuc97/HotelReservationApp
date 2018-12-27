@@ -132,7 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessAccessLayer\BusinessAccessLayer.csproj">
-      <Project>{5d306f81-0d3e-4a03-bab5-774e4c280180}</Project>
+      <Project>{a86b4d0b-cfb2-4a38-b48e-52a6ab45cf6c}</Project>
       <Name>BusinessAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">

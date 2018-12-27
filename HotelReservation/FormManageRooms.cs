@@ -48,11 +48,11 @@ namespace HotelReservation
             {
                 var newRoom = new Room()
             {
-                Number = textBoxNumber.Text,
-                Price = textBoxPrice.Text,
-                Capability = textBoxCapability.Text,
-                ComfortLevel = comboBoxComfortLvl.Text,
-                HotelId = hotelId.ToString()
+                Number = Convert.ToInt32(textBoxNumber.Text),
+                Price = Convert.ToDouble(textBoxPrice.Text),
+                Capability = Convert.ToInt16(textBoxCapability.Text),
+                ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
+                HotelId = Convert.ToInt32(hotelId.ToString())
             };
             roomRepository.AddRoom(newRoom);
             MessageBox.Show("New record has added");
@@ -88,10 +88,10 @@ namespace HotelReservation
             {
                 var room = new Room()
                 {
-                    Number = textBoxNumber.Text,
-                    Price = textBoxPrice.Text,
-                    Capability = textBoxCapability.Text,
-                    ComfortLevel = comboBoxComfortLvl.Text
+                    Number = Convert.ToInt32(textBoxNumber.Text),
+                    Price = Convert.ToDouble(textBoxPrice.Text),
+                    Capability = Convert.ToInt16(textBoxCapability.Text),
+                    ComfortLevel =Convert.ToInt16(comboBoxComfortLvl.Text)
                 };
                 roomRepository.UpdateRoom(room);
                 MessageBox.Show("The record has been updated!");
@@ -117,9 +117,9 @@ namespace HotelReservation
                 buttonUpdate.Enabled = true;
 
                 var book = roomRepository.FindRoomByRoomNumber(textBoxNumber.Text);
-                textBoxPrice.Text = book.Price;
-                textBoxCapability.Text = book.Capability;
-                comboBoxComfortLvl.Text = book.ComfortLevel;
+                textBoxPrice.Text = book.Price.ToString();
+                textBoxCapability.Text = book.Capability.ToString();
+                comboBoxComfortLvl.Text = book.ComfortLevel.ToString();
 
             }
             else

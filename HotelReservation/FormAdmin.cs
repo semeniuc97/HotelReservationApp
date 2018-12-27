@@ -39,11 +39,11 @@ namespace HotelReservation
             var HotelsList = hotelRepository.GetHotels();
             foreach(var hotel in HotelsList)
             {
-                ListViewItem listViewItem = new ListViewItem(hotel.HotelId);
+                ListViewItem listViewItem = new ListViewItem(hotel.Id.ToString());
                 listViewItem.SubItems.Add(hotel.HotelName);
                 listViewItem.SubItems.Add(hotel.FoundationYear.ToShortDateString());
                 listViewItem.SubItems.Add(hotel.Adress);
-                listViewItem.SubItems.Add(hotel.IsActive);
+                listViewItem.SubItems.Add(hotel.IsActive.ToString());
                 listViewHotels.Items.Add(listViewItem);
             }
         }

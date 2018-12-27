@@ -828,11 +828,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\msemeniu\\Desktop\\Test\\DataAccessLayer\\DataAccessLayer.csproj",
       "projectName": "DataAccessLayer",
-      "projectPath": "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectPath": "C:\\Users\\msemeniu\\Desktop\\Test\\DataAccessLayer\\DataAccessLayer.csproj",
       "packagesPath": "C:\\Users\\msemeniu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\DataAccessLayer\\obj\\",
+      "outputPath": "C:\\Users\\msemeniu\\Desktop\\Test\\DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -851,8 +851,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\msemeniu\\Desktop\\HotelReservationApp-master\\Models\\Models.csproj"
+            "C:\\Users\\msemeniu\\Desktop\\Test\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\msemeniu\\Desktop\\Test\\Models\\Models.csproj"
             }
           }
         }

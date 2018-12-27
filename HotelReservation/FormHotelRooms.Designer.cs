@@ -50,6 +50,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -183,6 +184,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel2.Controls.Add(this.monthCalendar1);
             this.panel2.Controls.Add(this.buttonCancel);
             this.panel2.Controls.Add(this.buttonAdd);
             this.panel2.Controls.Add(this.label2);
@@ -224,6 +226,12 @@
             this.label2.Size = new System.Drawing.Size(260, 39);
             this.label2.TabIndex = 3;
             this.label2.Text = "Room`s reservations";
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(125, 225);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 8;
             // 
             // FormHotelRooms
             // 
@@ -269,5 +277,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

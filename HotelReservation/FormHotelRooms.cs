@@ -77,11 +77,11 @@ namespace HotelReservation
             var hotelRooms = roomRepository.GetRoomsByHotelId(hotelId);
             foreach(var room in hotelRooms)
             {
-                ListViewItem listViewItem = new ListViewItem(room.RoomId);
-                listViewItem.SubItems.Add(room.Number);
-                listViewItem.SubItems.Add(room.Price);
-                listViewItem.SubItems.Add(room.Capability);
-                listViewItem.SubItems.Add(room.ComfortLevel);
+                ListViewItem listViewItem = new ListViewItem(room.Id.ToString());
+                listViewItem.SubItems.Add(room.Number.ToString());
+                listViewItem.SubItems.Add(room.Price.ToString());
+                listViewItem.SubItems.Add(room.Capability.ToString());
+                listViewItem.SubItems.Add(room.ComfortLevel.ToString());
                 listViewHotelRooms.Items.Add(listViewItem);
             }
 
@@ -92,7 +92,7 @@ namespace HotelReservation
             if (listViewHotelRooms.SelectedItems.Count != 0)
             {
             FormAddReservation formAddReservation = new FormAddReservation();
-            formAddReservation.RoomId = item.Text;
+            formAddReservation.RoomId = Convert.ToInt32(item.Text);
             formAddReservation.Show();
             }
             else
@@ -110,9 +110,9 @@ namespace HotelReservation
                 var roomBookings = bookingRepository.GetBookingsDetailsByRoomId(roomId);
                 foreach(var booking in roomBookings)
                 {
-                    ListViewItem listViewItem = new ListViewItem(booking.BookingId);
+                    ListViewItem listViewItem = new ListViewItem(booking.Id.ToString());
                     listViewItem.SubItems.Add(booking.UserName);
-                    listViewItem.SubItems.Add(booking.Price);
+                    listViewItem.SubItems.Add(booking.Price.ToString());
                     listViewItem.SubItems.Add(booking.StartDate.ToShortDateString());
                     listViewItem.SubItems.Add(booking.EndDate.ToShortDateString());
                     listViewItem.SubItems.Add(booking.Email);

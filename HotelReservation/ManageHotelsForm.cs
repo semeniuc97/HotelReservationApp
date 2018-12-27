@@ -52,7 +52,8 @@ namespace HotelReservation
                 textBoxHotelName.Text = hotel.HotelName;
                 textBoxAdress.Text = hotel.Adress;
                 dateTimePickerFYear.Value = hotel.FoundationYear;
-                comboBoxIsActive.Text = hotel.IsActive;
+                comboBoxIsActive.Text = hotel.IsActive.ToString();
+                comboBoxIsActive.Text = hotel.IsActive.ToString();
             }
             else
                 labelValidationMessage.Visible = true;
@@ -69,7 +70,7 @@ namespace HotelReservation
                     HotelName = textBoxHotelName.Text,
                     Adress = textBoxAdress.Text,
                     FoundationYear = dateTimePickerFYear.Value,
-                    IsActive = comboBoxIsActive.Text
+                    IsActive = Convert.ToBoolean(comboBoxIsActive.Text)
                 };
                 hotelRepository.AddHotel(hotel);
                 MessageBox.Show("New record has been added");
@@ -87,9 +88,9 @@ namespace HotelReservation
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (ValidationService.ValidateIsNumber(textBoxFyndById.Text))
+            if (ValidationService.ValidateIsNumber(textBoxAdress.Text))
             {
-                hotelRepository.DeleteHotel(textBoxAdress.Text);
+                hotelRepository.DeleteHotel(Convert.ToInt16(textBoxAdress.Text));
                 MessageBox.Show("The record has been deleted!");
                 this.Close();
             }
@@ -109,11 +110,11 @@ namespace HotelReservation
             {
                 var hotel = new Hotel()
                 {
-                    HotelId = textBoxFyndById.Text,
+                    Id = Convert.ToInt32(textBoxFyndById.Text),
                     HotelName = textBoxHotelName.Text,
                     Adress = textBoxAdress.Text,
                     FoundationYear = dateTimePickerFYear.Value,
-                    IsActive = comboBoxIsActive.Text
+                    IsActive = Convert.ToBoolean(comboBoxIsActive.Text)
                 };
                 hotelRepository.UpdateHotel(hotel);
                 MessageBox.Show("The record has been updated!");

@@ -1,0 +1,9 @@
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\BusinessAccessLayer.deps.json
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\BusinessAccessLayer.dll
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\BusinessAccessLayer.pdb
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.csprojAssemblyReference.cache
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.AssemblyInfoInputs.cache
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.AssemblyInfo.cs
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.dll
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.pdb

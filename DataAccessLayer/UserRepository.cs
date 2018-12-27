@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccessLayer
 {
-   public class UserRepository
+    public class UserRepository
     {
         string connectionString;
         public UserRepository(string connectionString)
@@ -25,8 +25,8 @@ namespace DataAccessLayer
                 {
                     var user = new User()
                     {
-                        UserId= reader["UserId"].ToString(),
-                        UserName= reader["UserName"].ToString()
+                        Id = (int)reader["UserId"],
+                        UserName = reader["UserName"].ToString()
                     };
                     allUsers.Add(user);
                 }
