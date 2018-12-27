@@ -74,12 +74,14 @@ namespace DataAccessLayer
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 var data = hotel.FoundationYear.ToString("u");
-                SqlCommand command = new SqlCommand($@"Insert into Hotels(HotelName,foundationYear,Adress,IsActive)
-                                                     Values(@hotelName,@foundationYear,@adress,@isActive);", sqlConnection);
+                SqlCommand command = new SqlCommand($@"Insert into Hotels(HotelName,foundationYear,Adress,IsActive,IsUpdated,IsAdded)
+                                                     Values(@hotelName,@foundationYear,@adress,@isActive,@isUpdated,@isAdded);", sqlConnection);
                 command.Parameters.Add(new SqlParameter("@hotelName", hotel.HotelName));
                 command.Parameters.Add(new SqlParameter("@foundationYear", hotel.FoundationYear));
                 command.Parameters.Add(new SqlParameter("@adress", hotel.Adress));
                 command.Parameters.Add(new SqlParameter("@isActive", hotel.IsActive));
+                command.Parameters.Add(new SqlParameter("@isAdded", hotel.IsAdded));
+                command.Parameters.Add(new SqlParameter("@isUpdated", hotel.IsUpdated));
 
                 sqlConnection.Open();
                 command.ExecuteNonQuery();
@@ -92,13 +94,15 @@ namespace DataAccessLayer
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand($@"Update Hotels Set HotelName=@hotelName,FoundationYear=@foundationYear,
-                                             Adress=@adress,IsActive=@isActive where HotelId=@id", sqlConnection);
+                                             Adress=@adress,IsActive=@isActive,IsUpdated=@isUpdated,IsAdded=@isAdded where HotelId=@id", sqlConnection);
 
                 command.Parameters.Add(new SqlParameter("@hotelName", hotel.HotelName));
                 command.Parameters.Add(new SqlParameter("@foundationYear", hotel.FoundationYear));
                 command.Parameters.Add(new SqlParameter("@adress", hotel.Adress));
                 command.Parameters.Add(new SqlParameter("@isActive", hotel.IsActive));
                 command.Parameters.Add(new SqlParameter("@id", hotel.Id));
+                command.Parameters.Add(new SqlParameter("@isAdded", hotel.IsAdded));
+                command.Parameters.Add(new SqlParameter("@isUpdated", hotel.IsUpdated));
 
                 sqlConnection.Open();
                 command.ExecuteNonQuery();

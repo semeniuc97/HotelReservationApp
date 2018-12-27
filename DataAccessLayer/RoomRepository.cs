@@ -81,12 +81,14 @@ namespace DataAccessLayer
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand($@"Update Rooms Set Price=@price,Capability=@capability,
-                                                    ComfortLevel=@comfortLevel where Number=@number;", sqlConnection);
+                                                    ComfortLevel=@comfortLevel,IsAdded=@isAdded,IsUpdated=@isUpdated where Number=@number;", sqlConnection);
 
                 command.Parameters.Add(new SqlParameter("@number", room.Number));
                 command.Parameters.Add(new SqlParameter("@price", room.Price));
                 command.Parameters.Add(new SqlParameter("@capability", room.Capability));
                 command.Parameters.Add(new SqlParameter("@comfortLevel", room.ComfortLevel));
+                command.Parameters.Add(new SqlParameter("@isAdded", room.IsAdded));
+                command.Parameters.Add(new SqlParameter("@isUpdated", room.IsUpdated));
 
 
                 sqlConnection.Open();
@@ -99,14 +101,16 @@ namespace DataAccessLayer
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                    SqlCommand command = new SqlCommand($@"Insert into Rooms(Number,Price,Capability,ComfortLevel,HotelId) 
-                                                       Values(@number,@price,@capability,@comfortLevel,@hotelId);", sqlConnection);
+                    SqlCommand command = new SqlCommand($@"Insert into Rooms(Number,Price,Capability,ComfortLevel,HotelId,IsUpdated,IsAdded) 
+                                                       Values(@number,@price,@capability,@comfortLevel,@hotelId,@isUpdated,@isAdded);", sqlConnection);
 
                 command.Parameters.Add(new SqlParameter("@number", room.Number));
                 command.Parameters.Add(new SqlParameter("@price", room.Price));
                 command.Parameters.Add(new SqlParameter("@capability", room.Capability));
                 command.Parameters.Add(new SqlParameter("@comfortLevel", room.ComfortLevel));
                 command.Parameters.Add(new SqlParameter("@hotelId", room.HotelId));
+                command.Parameters.Add(new SqlParameter("@isAdded", room.IsAdded));
+                command.Parameters.Add(new SqlParameter("@isUpdated", room.IsUpdated));
 
                 sqlConnection.Open();
                     command.ExecuteNonQuery();

@@ -70,7 +70,10 @@ namespace HotelReservation
                     HotelName = textBoxHotelName.Text,
                     Adress = textBoxAdress.Text,
                     FoundationYear = dateTimePickerFYear.Value,
-                    IsActive = Convert.ToBoolean(comboBoxIsActive.Text)
+                    IsActive = Convert.ToBoolean(comboBoxIsActive.Text),
+                    IsAdded=true,
+                    IsUpdated=false
+                    
                 };
                 hotelRepository.AddHotel(hotel);
                 MessageBox.Show("New record has been added");
@@ -114,7 +117,9 @@ namespace HotelReservation
                     HotelName = textBoxHotelName.Text,
                     Adress = textBoxAdress.Text,
                     FoundationYear = dateTimePickerFYear.Value,
-                    IsActive = Convert.ToBoolean(comboBoxIsActive.Text)
+                    IsActive = Convert.ToBoolean(comboBoxIsActive.Text),
+                    IsAdded=false,
+                    IsUpdated=true
                 };
                 hotelRepository.UpdateHotel(hotel);
                 MessageBox.Show("The record has been updated!");

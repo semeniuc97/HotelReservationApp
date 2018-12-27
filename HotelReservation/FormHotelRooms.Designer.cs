@@ -50,7 +50,6 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -63,9 +62,10 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listViewHotelRooms.Location = new System.Drawing.Point(18, 50);
+            this.listViewHotelRooms.Location = new System.Drawing.Point(24, 62);
+            this.listViewHotelRooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewHotelRooms.Name = "listViewHotelRooms";
-            this.listViewHotelRooms.Size = new System.Drawing.Size(336, 331);
+            this.listViewHotelRooms.Size = new System.Drawing.Size(447, 406);
             this.listViewHotelRooms.TabIndex = 0;
             this.listViewHotelRooms.UseCompatibleStateImageBehavior = false;
             this.listViewHotelRooms.View = System.Windows.Forms.View.Details;
@@ -100,17 +100,19 @@
             this.panel1.Controls.Add(this.buttonManageRooms);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.listViewHotelRooms);
-            this.panel1.Location = new System.Drawing.Point(12, 21);
+            this.panel1.Location = new System.Drawing.Point(16, 26);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(383, 483);
+            this.panel1.Size = new System.Drawing.Size(511, 594);
             this.panel1.TabIndex = 1;
             // 
             // buttonRefresh
             // 
             this.buttonRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRefresh.Location = new System.Drawing.Point(215, 407);
+            this.buttonRefresh.Location = new System.Drawing.Point(287, 501);
+            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(111, 41);
+            this.buttonRefresh.Size = new System.Drawing.Size(148, 50);
             this.buttonRefresh.TabIndex = 4;
             this.buttonRefresh.Text = "Refresh";
             this.buttonRefresh.UseVisualStyleBackColor = true;
@@ -119,9 +121,10 @@
             // buttonManageRooms
             // 
             this.buttonManageRooms.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonManageRooms.Location = new System.Drawing.Point(27, 407);
+            this.buttonManageRooms.Location = new System.Drawing.Point(36, 501);
+            this.buttonManageRooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonManageRooms.Name = "buttonManageRooms";
-            this.buttonManageRooms.Size = new System.Drawing.Size(111, 41);
+            this.buttonManageRooms.Size = new System.Drawing.Size(148, 50);
             this.buttonManageRooms.TabIndex = 3;
             this.buttonManageRooms.Text = "Manage";
             this.buttonManageRooms.UseVisualStyleBackColor = true;
@@ -131,10 +134,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(82, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(109, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 39);
+            this.label1.Size = new System.Drawing.Size(228, 49);
             this.label1.TabIndex = 2;
             this.label1.Text = "Hotel`s rooms";
             // 
@@ -147,9 +149,10 @@
             this.columnHeader12,
             this.columnHeader8,
             this.columnHeader9});
-            this.listViewRoomReservation.Location = new System.Drawing.Point(23, 49);
+            this.listViewRoomReservation.Location = new System.Drawing.Point(31, 60);
+            this.listViewRoomReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewRoomReservation.Name = "listViewRoomReservation";
-            this.listViewRoomReservation.Size = new System.Drawing.Size(336, 331);
+            this.listViewRoomReservation.Size = new System.Drawing.Size(447, 406);
             this.listViewRoomReservation.TabIndex = 2;
             this.listViewRoomReservation.UseCompatibleStateImageBehavior = false;
             this.listViewRoomReservation.View = System.Windows.Forms.View.Details;
@@ -184,22 +187,23 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.panel2.Controls.Add(this.monthCalendar1);
             this.panel2.Controls.Add(this.buttonCancel);
             this.panel2.Controls.Add(this.buttonAdd);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.listViewRoomReservation);
-            this.panel2.Location = new System.Drawing.Point(425, 22);
+            this.panel2.Location = new System.Drawing.Point(567, 27);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(383, 483);
+            this.panel2.Size = new System.Drawing.Size(511, 594);
             this.panel2.TabIndex = 3;
             // 
             // buttonCancel
             // 
             this.buttonCancel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCancel.Location = new System.Drawing.Point(226, 406);
+            this.buttonCancel.Location = new System.Drawing.Point(301, 500);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(111, 41);
+            this.buttonCancel.Size = new System.Drawing.Size(148, 50);
             this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -208,9 +212,10 @@
             // buttonAdd
             // 
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAdd.Location = new System.Drawing.Point(47, 406);
+            this.buttonAdd.Location = new System.Drawing.Point(63, 500);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(111, 41);
+            this.buttonAdd.Size = new System.Drawing.Size(148, 50);
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -220,27 +225,21 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 7);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(53, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(260, 39);
+            this.label2.Size = new System.Drawing.Size(323, 49);
             this.label2.TabIndex = 3;
             this.label2.Text = "Room`s reservations";
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(125, 225);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 8;
-            // 
             // FormHotelRooms
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(820, 517);
+            this.ClientSize = new System.Drawing.Size(1093, 636);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FormHotelRooms";
             this.Text = "FormHotelRooms";
@@ -277,6 +276,5 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

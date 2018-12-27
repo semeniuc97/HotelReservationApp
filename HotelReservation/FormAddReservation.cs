@@ -17,8 +17,8 @@ namespace HotelReservation
 {
     public partial class FormAddReservation : Form
     {
-        BookingService bookingService = new BookingService();
         static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
+        BookingService bookingService = new BookingService(connectionString);
         UserRepository userRepository = new UserRepository(connectionString);
         BookingRepository bookingRepository = new BookingRepository(connectionString);
         int roomId;
@@ -36,6 +36,7 @@ namespace HotelReservation
 
         private void FormAddReservation_Shown(object sender, EventArgs e)
         {
+            monthCalendarBookedDays.BoldedDates = bookingService.GetAllBookedDays(roomId).ToArray();
             listViewUsers.Items.Clear();
             var allUsers = userRepository.GetAllUsers();
             foreach (var user in allUsers)
@@ -50,30 +51,35 @@ namespace HotelReservation
 
         private void buttonAddReservation_Click(object sender, EventArgs e)
         {
-            bookingService.GetBookingDatesRange(dateTimePickerStart.Value, dateTimePickerEnd.Value);
-            if (ValidationService.ValidateBookingDates(dateTimePickerStart.Value, dateTimePickerEnd.Value))
+            if (listViewUsers.SelectedItems.Count != 0)
             {
-                if (listViewUsers.SelectedItems.Count != 0)
+                if (ValidationService.ValidateBookingDates(dateTimePickerStart.Value, dateTimePickerEnd.Value))
                 {
-                    ListViewItem item = listViewUsers.SelectedItems[0];
-                    Booking booking = new Booking()
+                    if (bookingService.CheckIsBookedDates(dateTimePickerStart.Value, dateTimePickerEnd.Value))
                     {
-                        StartDate = dateTimePickerStart.Value,
-                        EndDate = dateTimePickerEnd.Value,
-                        UserId = Convert.ToInt32(item.Text),
-                        RoomId = roomId
-                    };
-                    bookingRepository.AddBooking(booking);
-                    MessageBox.Show("New record has added");
-                    this.Close();
-                }
-                else
-                {
-                    labelError.Visible = true;
-                }
+
+                        ListViewItem item = listViewUsers.SelectedItems[0];
+                        Booking booking = new Booking()
+                        {
+                            StartDate = dateTimePickerStart.Value,
+                            EndDate = dateTimePickerEnd.Value,
+                            UserId = Convert.ToInt32(item.Text),
+                            RoomId = roomId
+                        };
+                        bookingRepository.AddBooking(booking);
+                        MessageBox.Show("New record has added");
+                        this.Close();
+                    }
+                    else
+                        labelErrorBookedRoom.Visible = true;
             }
             else
                 labelDatesValidation.Visible = true;
+        }
+            else
+            {
+                labelError.Visible = true;
+            }
 
         }
 
@@ -96,6 +102,19 @@ namespace HotelReservation
                 labelError.Visible = true;
             }
 
+        }
+
+        private void monthCalendarBookedDays_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            if (radioButtonStartDate.Checked == true)
+            {
+                dateTimePickerStart.Value = monthCalendarBookedDays.SelectionStart;
+            }
+            else
+            {
+                if (radioButtonEndDate.Checked == true)
+                    dateTimePickerEnd.Value = monthCalendarBookedDays.SelectionStart;
+            }
         }
     }
 }

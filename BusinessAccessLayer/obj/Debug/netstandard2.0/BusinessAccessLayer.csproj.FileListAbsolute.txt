@@ -7,3 +7,17 @@ C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\Busi
 C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.AssemblyInfo.cs
 C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.dll
 C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.pdb
+C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.AssemblyInfo.cs
+C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\BusinessAccessLayer.deps.json
+C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\BusinessAccessLayer.dll
+C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\BusinessAccessLayer.pdb
+C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\DataAccessLayer.dll
+C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\Models.dll
+C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\DataAccessLayer.pdb
+C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\Models.pdb
+C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.csproj.CopyComplete
+C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.dll
+C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.pdb

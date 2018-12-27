@@ -14,6 +14,10 @@ namespace DataAccessLayer
         {
             this.connectionString = connectionString;
         }
+        public BookingRepository()
+        {
+
+        }
 
         public List<BookingDetails> GetBookingsDetailsByRoomId(int roomId)
         {
@@ -96,7 +100,7 @@ namespace DataAccessLayer
                     };
                     bookingsPeriods.Add(bookingPeriod);
                 }
-                command.ExecuteNonQuery();
+                reader.Close();
             }
             return bookingsPeriods;
         }

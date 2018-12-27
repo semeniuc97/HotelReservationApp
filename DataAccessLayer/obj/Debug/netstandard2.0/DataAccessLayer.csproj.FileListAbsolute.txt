@@ -34,3 +34,15 @@ C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAcce
 C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csproj.CopyComplete
 C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.dll
 C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.pdb
+C:\Users\User\Desktop\Test\DataAccessLayer\bin\Debug\netstandard2.0\DataAccessLayer.deps.json
+C:\Users\User\Desktop\Test\DataAccessLayer\bin\Debug\netstandard2.0\DataAccessLayer.dll
+C:\Users\User\Desktop\Test\DataAccessLayer\bin\Debug\netstandard2.0\DataAccessLayer.pdb
+C:\Users\User\Desktop\Test\DataAccessLayer\bin\Debug\netstandard2.0\Models.dll
+C:\Users\User\Desktop\Test\DataAccessLayer\bin\Debug\netstandard2.0\Models.pdb
+C:\Users\User\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\User\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csproj.CopyComplete
+C:\Users\User\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.dll
+C:\Users\User\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.pdb

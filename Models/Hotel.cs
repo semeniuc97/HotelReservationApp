@@ -11,6 +11,8 @@ namespace Models
         public DateTime FoundationYear { get; set; }
         public string Adress { get; set; }
         public bool IsActive { get; set; }
+        public bool IsUpdated { get; set; }
+        public bool IsAdded { get; set; }
 
 
     }

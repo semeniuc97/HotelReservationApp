@@ -52,7 +52,10 @@ namespace HotelReservation
                 Price = Convert.ToDouble(textBoxPrice.Text),
                 Capability = Convert.ToInt16(textBoxCapability.Text),
                 ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
-                HotelId = Convert.ToInt32(hotelId.ToString())
+                HotelId = Convert.ToInt32(hotelId.ToString()),
+                IsAdded=true,
+                IsUpdated=false
+                
             };
             roomRepository.AddRoom(newRoom);
             MessageBox.Show("New record has added");
@@ -91,7 +94,10 @@ namespace HotelReservation
                     Number = Convert.ToInt32(textBoxNumber.Text),
                     Price = Convert.ToDouble(textBoxPrice.Text),
                     Capability = Convert.ToInt16(textBoxCapability.Text),
-                    ComfortLevel =Convert.ToInt16(comboBoxComfortLvl.Text)
+                    ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
+                    IsAdded = false,
+                    IsUpdated = true
+                    
                 };
                 roomRepository.UpdateRoom(room);
                 MessageBox.Show("The record has been updated!");
