@@ -25,6 +25,7 @@ namespace HotelReservation
         public FormAddReservation()
         {
             InitializeComponent();
+            listViewUsers.FullRowSelect = true;
         }
         public int RoomId
         {

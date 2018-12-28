@@ -20,6 +20,7 @@ namespace HotelReservation
         public FormAdmin()
         {
             InitializeComponent();
+            listViewHotels.FullRowSelect = true;
         }
         
         private void Form2_Load(object sender, EventArgs e)

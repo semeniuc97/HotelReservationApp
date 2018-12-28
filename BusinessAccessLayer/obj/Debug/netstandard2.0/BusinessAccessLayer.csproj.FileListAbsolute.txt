@@ -21,3 +21,8 @@ C:\Users\User\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\Models.p
 C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.csproj.CopyComplete
 C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.dll
 C:\Users\User\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.pdb
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\DataAccessLayer.dll
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\Models.dll
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\DataAccessLayer.pdb
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\bin\Debug\netstandard2.0\Models.pdb
+C:\Users\msemeniu\Desktop\Test\BusinessAccessLayer\obj\Debug\netstandard2.0\BusinessAccessLayer.csproj.CopyComplete

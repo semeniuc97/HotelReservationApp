@@ -58,5 +58,13 @@ namespace BusinessAccessLayer.Services
             else
                 return true;
         }
+
+        public static bool ValidateRatingBookingDates(DateTime StartDate, DateTime EndDate)
+        {
+                if (EndDate > StartDate)
+                    return true;
+                else
+                    return false;
+        }
     }
 }

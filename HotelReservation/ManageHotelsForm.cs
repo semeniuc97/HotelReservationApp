@@ -22,6 +22,7 @@ namespace HotelReservation
         public ManageHotelsForm()
         {
             InitializeComponent();
+            
         }
 
         private void ManageHotelsForm_Shown(object sender, EventArgs e)

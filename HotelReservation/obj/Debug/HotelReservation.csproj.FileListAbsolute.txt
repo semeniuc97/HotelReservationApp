@@ -512,3 +512,4 @@ C:\Users\User\Desktop\Test\HotelReservation\bin\Debug\BusinessAccessLayer.pdb
 C:\Users\User\Desktop\Test\HotelReservation\bin\Debug\DataAccessLayer.pdb
 C:\Users\User\Desktop\Test\HotelReservation\bin\Debug\Models.pdb
 C:\Users\User\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.csproj.CopyComplete
+C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.FormHotelRating.resources

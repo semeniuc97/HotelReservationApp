@@ -105,5 +105,36 @@ namespace DataAccessLayer
             return bookingsPeriods;
         }
 
+        public List<RoomBookings> GetRoomBookingsByDatesRange(DateTime StartDate,DateTime EndDate)
+        {
+            var roomBookingsList = new List<RoomBookings>();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(@"Select top 10 Count(Rooms.Number) as RoomCountReserves,Rooms.Number,Hotels.HotelName 
+               from  Bookings inner join Rooms on Bookings.RoomId=Rooms.RoomId
+                inner join Hotels on Rooms.Hotelid=Hotels.HotelId
+                where Bookings.StartDate >=@startDate and Bookings.EndDate <= @endDate
+                group by Rooms.Number,Hotels.HotelName
+                order by RoomCountReserves desc;", sqlConnection);
+
+                command.Parameters.Add(new SqlParameter("@startDate", StartDate));
+                command.Parameters.Add(new SqlParameter("@endDate", EndDate));
+                sqlConnection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var roomBookings = new RoomBookings()
+                    {
+                        CountBookings = Convert.ToInt32(reader["RoomCountReserves"]),
+                        RoomNumber = Convert.ToInt32(reader["Number"]),
+                        HotelName=reader["HotelName"].ToString()
+                    };
+                    roomBookingsList.Add(roomBookings);
+                }
+                reader.Close();
+            }
+            return roomBookingsList;
+        }
+
     }
 }

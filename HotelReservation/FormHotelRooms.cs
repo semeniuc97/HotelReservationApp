@@ -33,6 +33,8 @@ namespace HotelReservation
         public FormHotelRooms()
         {
             InitializeComponent();
+            listViewHotelRooms.FullRowSelect = true;
+            listViewRoomReservation.FullRowSelect = true;
         }
 
 
