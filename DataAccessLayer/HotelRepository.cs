@@ -69,7 +69,7 @@ namespace DataAccessLayer
             return hotel;
         }
 
-        public void AddHotel(Hotel hotel)
+        public int AddHotel(Hotel hotel)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -84,12 +84,11 @@ namespace DataAccessLayer
                 command.Parameters.Add(new SqlParameter("@isUpdated", hotel.IsUpdated));
 
                 sqlConnection.Open();
-                command.ExecuteNonQuery();
-                sqlConnection.Close();
+               return command.ExecuteNonQuery();
             }
         }
 
-        public void UpdateHotel(Hotel hotel)
+        public int UpdateHotel(Hotel hotel)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -105,12 +104,11 @@ namespace DataAccessLayer
                 command.Parameters.Add(new SqlParameter("@isUpdated", hotel.IsUpdated));
 
                 sqlConnection.Open();
-                command.ExecuteNonQuery();
-                sqlConnection.Close();
+                return command.ExecuteNonQuery();
 
             }
         }
-        public void DeleteHotel(int hotelId)
+        public int DeleteHotel(int hotelId)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -119,7 +117,7 @@ namespace DataAccessLayer
                     command.Parameters.Add(new SqlParameter("@hotelId", hotelId));
 
                     sqlConnection.Open();
-                    command.ExecuteNonQuery();
+                   return command.ExecuteNonQuery();
                     //sqlConnection.Close();
                 }
             }

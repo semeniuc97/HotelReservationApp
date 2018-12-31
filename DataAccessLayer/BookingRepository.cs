@@ -51,7 +51,7 @@ namespace DataAccessLayer
             return bookingDetails;
         }
 
-        public void AddBooking(Booking booking)
+        public int AddBooking(Booking booking)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -63,20 +63,19 @@ namespace DataAccessLayer
                 command.Parameters.Add(new SqlParameter("@roomId", booking.RoomId));
 
                 sqlConnection.Open();
-                command.ExecuteNonQuery();
-                sqlConnection.Close();
+                return command.ExecuteNonQuery();
             }
         }
 
-        public void CancelBooking(string bookingid)
+        public int CancelBooking(string bookingid)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand("Delete From Bookings Where BookingId=@bookingId;", sqlConnection);
 
-                    command.Parameters.Add(new SqlParameter("@bookingid", bookingid));
+                command.Parameters.Add(new SqlParameter("@bookingid", bookingid));
                 sqlConnection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
 
         }
@@ -91,7 +90,7 @@ namespace DataAccessLayer
                 command.Parameters.Add(new SqlParameter("@roomId", roomId));
                 sqlConnection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     var bookingPeriod = new BookingPeriod()
                     {
@@ -105,7 +104,7 @@ namespace DataAccessLayer
             return bookingsPeriods;
         }
 
-        public List<RoomBookings> GetRoomBookingsByDatesRange(DateTime StartDate,DateTime EndDate)
+        public List<RoomBookings> GetRoomBookingsByDatesRange(DateTime StartDate, DateTime EndDate)
         {
             var roomBookingsList = new List<RoomBookings>();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -127,7 +126,7 @@ namespace DataAccessLayer
                     {
                         CountBookings = Convert.ToInt32(reader["RoomCountReserves"]),
                         RoomNumber = Convert.ToInt32(reader["Number"]),
-                        HotelName=reader["HotelName"].ToString()
+                        HotelName = reader["HotelName"].ToString()
                     };
                     roomBookingsList.Add(roomBookings);
                 }

@@ -94,6 +94,7 @@
             this.labelEndDate.Size = new System.Drawing.Size(49, 13);
             this.labelEndDate.TabIndex = 5;
             this.labelEndDate.Text = "EndDate";
+            this.labelEndDate.Click += new System.EventHandler(this.labelEndDate_Click);
             // 
             // labelStartDate
             // 
@@ -103,6 +104,7 @@
             this.labelStartDate.Size = new System.Drawing.Size(52, 13);
             this.labelStartDate.TabIndex = 6;
             this.labelStartDate.Text = "StartDate";
+            this.labelStartDate.Click += new System.EventHandler(this.labelStartDate_Click);
             // 
             // buttonAddReservation
             // 
@@ -142,7 +144,7 @@
             this.monthCalendarBookedDays.BackColor = System.Drawing.SystemColors.HighlightText;
             this.monthCalendarBookedDays.ForeColor = System.Drawing.Color.Black;
             this.monthCalendarBookedDays.Location = new System.Drawing.Point(16, 16);
-            this.monthCalendarBookedDays.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.monthCalendarBookedDays.Margin = new System.Windows.Forms.Padding(7);
             this.monthCalendarBookedDays.Name = "monthCalendarBookedDays";
             this.monthCalendarBookedDays.ShowToday = false;
             this.monthCalendarBookedDays.TabIndex = 11;
@@ -154,7 +156,7 @@
             this.radioButtonStartDate.AutoSize = true;
             this.radioButtonStartDate.Checked = true;
             this.radioButtonStartDate.Location = new System.Drawing.Point(294, 23);
-            this.radioButtonStartDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonStartDate.Name = "radioButtonStartDate";
             this.radioButtonStartDate.Size = new System.Drawing.Size(14, 13);
             this.radioButtonStartDate.TabIndex = 12;
@@ -165,7 +167,7 @@
             // 
             this.radioButtonEndDate.AutoSize = true;
             this.radioButtonEndDate.Location = new System.Drawing.Point(294, 84);
-            this.radioButtonEndDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonEndDate.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonEndDate.Name = "radioButtonEndDate";
             this.radioButtonEndDate.Size = new System.Drawing.Size(14, 13);
             this.radioButtonEndDate.TabIndex = 13;

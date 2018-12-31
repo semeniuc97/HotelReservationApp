@@ -15,11 +15,11 @@ using Models;
 
 namespace HotelReservation
 {
-    public partial class ManageHotelsForm : Form
+    public partial class FormManageHotels : Form
     {
         static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
         HotelRepository hotelRepository = new HotelRepository(connectionString);
-        public ManageHotelsForm()
+        public FormManageHotels()
         {
             InitializeComponent();
             

@@ -279,7 +279,6 @@ C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.FormA
 C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.FormAdmin.resources
 C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.FormHotelRooms.resources
 C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.FormManageRooms.resources
-C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.ManageHotelsForm.resources
 C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.Properties.Resources.resources
 C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.csproj.GenerateResource.cache
 C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.csproj.CoreCompileInputs.cache
@@ -513,3 +512,4 @@ C:\Users\User\Desktop\Test\HotelReservation\bin\Debug\DataAccessLayer.pdb
 C:\Users\User\Desktop\Test\HotelReservation\bin\Debug\Models.pdb
 C:\Users\User\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.csproj.CopyComplete
 C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.FormHotelRating.resources
+C:\Users\msemeniu\Desktop\Test\HotelReservation\obj\Debug\HotelReservation.FormManageHotels.resources

@@ -66,7 +66,7 @@ namespace HotelReservation
 
         private void buttonModify_Click(object sender, EventArgs e)
         {
-            ManageHotelsForm manageHotelsForm = new ManageHotelsForm();
+            FormManageHotels manageHotelsForm = new FormManageHotels();
             manageHotelsForm.Show();
         }
 

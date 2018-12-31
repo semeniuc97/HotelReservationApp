@@ -64,19 +64,18 @@ namespace DataAccessLayer
             return room;
         }
 
-        public void DeleteRoomById(string roomId)
+        public int DeleteRoomById(string roomId)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand("Delete From Rooms Where RoomId=@roomId;", sqlConnection);
                 command.Parameters.Add(new SqlParameter("roomId", roomId));
                 sqlConnection.Open();
-                command.ExecuteNonQuery();
-                sqlConnection.Close();
+                return command.ExecuteNonQuery();
             }
         }
 
-        public void UpdateRoom(Room room)
+        public int UpdateRoom(Room room)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -92,12 +91,11 @@ namespace DataAccessLayer
 
 
                 sqlConnection.Open();
-                command.ExecuteNonQuery();
-                sqlConnection.Close();
+                return command.ExecuteNonQuery();
 
             }
         }
-        public void AddRoom(Room room)
+        public int AddRoom(Room room)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -113,8 +111,7 @@ namespace DataAccessLayer
                 command.Parameters.Add(new SqlParameter("@isUpdated", room.IsUpdated));
 
                 sqlConnection.Open();
-                    command.ExecuteNonQuery();
-                    sqlConnection.Close();
+                    return command.ExecuteNonQuery();
             }
         }
     }

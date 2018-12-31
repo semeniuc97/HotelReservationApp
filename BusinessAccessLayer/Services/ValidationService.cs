@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace BusinessAccessLayer.Services
 {
     public static class ValidationService
-    {            
+    {
         public static bool ValidateHotelName(string word)
         {
             Match match = Regex.Match(word, "[a-zA-Z]{3,}");
@@ -51,20 +51,14 @@ namespace BusinessAccessLayer.Services
         }
         public static bool ValidateFoundationYear(DateTime foundationYear)
         {
-            if (foundationYear > DateTime.Now)
-            {
-                return false;
-            }
-            else
-                return true;
+            return (foundationYear > DateTime.Now) ? false : true;
+           
         }
 
         public static bool ValidateRatingBookingDates(DateTime StartDate, DateTime EndDate)
         {
-                if (EndDate > StartDate)
-                    return true;
-                else
-                    return false;
+            return EndDate > StartDate ? true : false;
+
         }
     }
 }

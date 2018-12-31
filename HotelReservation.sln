@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessAccessLayer", "BusinessAccessLayer\BusinessAccessLayer.csproj", "{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingServiceUnitTests", "BusinessServiceUnitTests\BookingServiceUnitTests.csproj", "{7DD9C120-5823-4215-A788-DC50628E1E95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessServiceXUnitTests", "XUnitTestProject1\BusinessServiceXUnitTests.csproj", "{C2BDB97F-2874-4E48-A396-9968A542EA9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A86B4D0B-CFB2-4A38-B48E-52A6AB45CF6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DD9C120-5823-4215-A788-DC50628E1E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DD9C120-5823-4215-A788-DC50628E1E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DD9C120-5823-4215-A788-DC50628E1E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DD9C120-5823-4215-A788-DC50628E1E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2BDB97F-2874-4E48-A396-9968A542EA9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2BDB97F-2874-4E48-A396-9968A542EA9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2BDB97F-2874-4E48-A396-9968A542EA9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2BDB97F-2874-4E48-A396-9968A542EA9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

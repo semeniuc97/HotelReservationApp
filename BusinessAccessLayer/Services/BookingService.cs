@@ -18,7 +18,7 @@ namespace BusinessAccessLayer.Services
             bookingRepository = new BookingRepository(connectionString);
         }
 
-        public List<DateTime> GetAllBookedDays(int roomId)
+        public virtual List<DateTime> GetAllBookedDays(int roomId)
         {
             var roomBookingsPeriods = bookingRepository.GetBookingsDatePeriods(roomId);
             //var roomAllBookedDays = new List<DateTime>();
@@ -29,7 +29,7 @@ namespace BusinessAccessLayer.Services
             return bookedDates;
         }
 
-        public bool CheckIsBookedDates(DateTime StartDate, DateTime EndDate)
+        public virtual bool CheckIsBookedDates(DateTime StartDate, DateTime EndDate)
         {
             if (bookedDates.Contains(StartDate) || bookedDates.Contains(EndDate))
             {
@@ -39,7 +39,7 @@ namespace BusinessAccessLayer.Services
                 return true;
         }
 
-        private List<DateTime> GetBookingDatesRange(DateTime StartDate, DateTime EndDate)
+        public virtual List<DateTime> GetBookingDatesRange(DateTime StartDate, DateTime EndDate)
         {
             var bookedDate = StartDate;
             var bookedDates = new List<DateTime>()

@@ -117,5 +117,15 @@ namespace HotelReservation
                     dateTimePickerEnd.Value = monthCalendarBookedDays.SelectionStart;
             }
         }
+
+        private void labelStartDate_Click(object sender, EventArgs e)
+        {
+            radioButtonStartDate.Checked = true;
+        }
+
+        private void labelEndDate_Click(object sender, EventArgs e)
+        {
+            radioButtonEndDate.Checked = true;
+        }
     }
 }
