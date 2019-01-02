@@ -47,18 +47,22 @@ namespace HotelReservation
                 ValidationService.ValidateIsPrice(textBoxPrice.Text))
             {
                 var newRoom = new Room()
-            {
-                Number = Convert.ToInt32(textBoxNumber.Text),
-                Price = Convert.ToDouble(textBoxPrice.Text),
-                Capability = Convert.ToInt16(textBoxCapability.Text),
-                ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
-                HotelId = Convert.ToInt32(hotelId.ToString()),
-                AddDate=DateTime.Now
-                
-            };
-            roomRepository.AddRoom(newRoom);
-            MessageBox.Show("New record has added");
-            this.Close();
+                {
+                    Number = Convert.ToInt32(textBoxNumber.Text),
+                    Price = Convert.ToDouble(textBoxPrice.Text),
+                    Capability = Convert.ToInt16(textBoxCapability.Text),
+                    ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
+                    HotelId = Convert.ToInt32(hotelId.ToString()),
+                    AddDate = DateTime.Now
+
+                };
+                using (var context = ContextResolver.GetContext())
+                {
+                    var roomService = new RoomService(context);
+                    roomService.AddRoom(newRoom);
+                }
+                MessageBox.Show("New record has added");
+                this.Close();
             }
             else
                 labelValidationMessage.Visible = true;
@@ -75,6 +79,11 @@ namespace HotelReservation
             {
 
                 roomRepository.DeleteRoomById(textBoxCapability.Text);
+                using (var context = ContextResolver.GetContext())
+                {
+                    var roomService = new RoomService(context);
+                    roomService.DeleteRoom(Convert.ToInt32(textBoxCapability.Text));
+                }
                 MessageBox.Show("The record has been deleted!");
                 this.Close();
             }
@@ -95,9 +104,13 @@ namespace HotelReservation
                     Capability = Convert.ToInt16(textBoxCapability.Text),
                     ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
                     UpdateDate = DateTime.Now
-                    
+
                 };
-                roomRepository.UpdateRoom(room);
+                using (var context = ContextResolver.GetContext())
+                {
+                    var roomService = new RoomService(context);
+                    roomService.UpdateRoom(room);
+                }
                 MessageBox.Show("The record has been updated!");
                 this.Close();
             }
@@ -120,10 +133,16 @@ namespace HotelReservation
                 comboBoxComfortLvl.Enabled = true;
                 buttonUpdate.Enabled = true;
 
-                var book = roomRepository.FindRoomByRoomNumber(textBoxNumber.Text);
-                textBoxPrice.Text = book.Price.ToString();
-                textBoxCapability.Text = book.Capability.ToString();
-                comboBoxComfortLvl.Text = book.ComfortLevel.ToString();
+                var room = new Room();
+                using (var context = ContextResolver.GetContext())
+                {
+                    var roomService = new RoomService(context);
+                    room = roomService.FindRoomByRoomNumber(Convert.ToInt32(textBoxNumber.Text));
+                }
+
+                textBoxPrice.Text = room.Price.ToString();
+                textBoxCapability.Text = room.Capability.ToString();
+                comboBoxComfortLvl.Text = room.ComfortLevel.ToString();
 
             }
             else

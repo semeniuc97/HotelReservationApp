@@ -11,8 +11,10 @@ namespace Models
         public DateTime FoundationYear { get; set; }
         public string Adress { get; set; }
         public bool IsActive { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
+
+        public ICollection<Room> Rooms { get; set; }
 
 
     }

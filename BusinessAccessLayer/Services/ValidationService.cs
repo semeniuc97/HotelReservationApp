@@ -41,7 +41,7 @@ namespace BusinessAccessLayer.Services
         {
             if (StartDate > DateTime.Now && EndDate > DateTime.Now)
             {
-                if (EndDate > StartDate)
+                if (EndDate > StartDate)    
                     return true;
                 else
                     return false;

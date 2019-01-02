@@ -17,8 +17,8 @@ namespace HotelReservation
 {
     public partial class FormManageHotels : Form
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
-        HotelRepository hotelRepository = new HotelRepository(connectionString);
+        //static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
+        //HotelRepository hotelRepository = new HotelRepository(connectionString);
         public FormManageHotels()
         {
             InitializeComponent();
@@ -48,8 +48,13 @@ namespace HotelReservation
             //bool isNumeric = int.TryParse(textBoxFyndById.Text, out num);
             if (ValidationService.ValidateIsNumber(textBoxFyndById.Text))
             {
+                var hotel = new Hotel();
+                using (var context = ContextResolver.GetContext())
+                {
+                    var hotelService = new HotelService(context);
+                    hotel = hotelService.FindHotel(Convert.ToInt32(textBoxFyndById.Text));
+                }
 
-                var hotel = hotelRepository.FindHotelById(textBoxFyndById.Text);
                 textBoxHotelName.Text = hotel.HotelName;
                 textBoxAdress.Text = hotel.Adress;
                 dateTimePickerFYear.Value = hotel.FoundationYear;
@@ -75,8 +80,13 @@ namespace HotelReservation
                     CreateDate= DateTime.Now
                     
                 };
-                hotelRepository.AddHotel(hotel);
-                MessageBox.Show("New record has been added");
+
+                using (var context = ContextResolver.GetContext())
+                {
+                    var hotelService = new HotelService(context);
+                    hotelService.AddHotel(hotel);
+                }
+                    MessageBox.Show("New record has been added");
                 this.Close();
             }
             else
@@ -93,7 +103,11 @@ namespace HotelReservation
         {
             if (ValidationService.ValidateIsNumber(textBoxAdress.Text))
             {
-                hotelRepository.DeleteHotel(Convert.ToInt16(textBoxAdress.Text));
+                using (var context = ContextResolver.GetContext())
+                {
+                    var hotelService = new HotelService(context);
+                    hotelService.DeleteHotel(Convert.ToInt16(textBoxAdress.Text));
+                }
                 MessageBox.Show("The record has been deleted!");
                 this.Close();
             }
@@ -120,7 +134,12 @@ namespace HotelReservation
                     IsActive = Convert.ToBoolean(comboBoxIsActive.Text),
                     UpdateDate=DateTime.Now
                 };
-                hotelRepository.UpdateHotel(hotel);
+
+                using (var context = ContextResolver.GetContext())
+                {
+                    var hotelService = new HotelService(context);
+                    hotelService.UpdateHotel(hotel);
+                }
                 MessageBox.Show("The record has been updated!");
                 this.Close();
             }
