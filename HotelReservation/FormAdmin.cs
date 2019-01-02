@@ -81,7 +81,7 @@ namespace HotelReservation
             }
             else
             {
-                MessageBox.Show("Input the Id!");
+                MessageBox.Show("Select the Hotel!");
             }
         }
 

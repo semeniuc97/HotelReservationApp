@@ -112,7 +112,7 @@ namespace DataAccessLayer
                 SqlCommand command = new SqlCommand(@"Select top 10 Count(Rooms.Number) as RoomCountReserves,Rooms.Number,Hotels.HotelName 
                from  Bookings inner join Rooms on Bookings.RoomId=Rooms.RoomId
                 inner join Hotels on Rooms.Hotelid=Hotels.HotelId
-                where Bookings.StartDate >=@startDate and Bookings.EndDate <= @endDate
+                where Bookings.StartDate >= @startDate and Bookings.EndDate <= @endDate
                 group by Rooms.Number,Hotels.HotelName
                 order by RoomCountReserves desc;", sqlConnection);
 

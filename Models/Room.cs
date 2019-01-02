@@ -12,7 +12,7 @@ namespace Models
         public int Capability { get; set; }
         public int ComfortLevel { get; set; }
         public int HotelId { get; set; }
-        public bool IsUpdated { get; set; }
-        public bool IsAdded { get; set; }
+        public DateTime UpdateDate { get; set; }
+        public DateTime AddDate { get; set; }
     }
 }

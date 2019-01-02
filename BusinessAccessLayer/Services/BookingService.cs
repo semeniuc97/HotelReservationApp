@@ -8,7 +8,7 @@ namespace BusinessAccessLayer.Services
     public class BookingService
     {
         BookingRepository bookingRepository;
-        List<DateTime> bookedDates = new List<DateTime>();
+        public List<DateTime> bookedDates = new List<DateTime>();
         public BookingService()
         {
 
