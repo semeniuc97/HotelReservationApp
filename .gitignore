@@ -8,3 +8,6 @@
 *.dll
 *.cache
 *.cs
+*.cache
+*.cache
+*._

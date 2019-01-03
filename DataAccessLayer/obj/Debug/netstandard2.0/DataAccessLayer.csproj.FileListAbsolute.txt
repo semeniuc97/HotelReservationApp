@@ -1,6 +1,0 @@
-C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csprojAssemblyReference.cache
-C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csproj.CoreCompileInputs.cache
-C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.AssemblyInfoInputs.cache
-C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.AssemblyInfo.cs
-C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.dll
-C:\Users\msemeniu\Desktop\Test\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.pdb

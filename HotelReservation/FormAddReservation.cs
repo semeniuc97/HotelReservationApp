@@ -17,10 +17,9 @@ namespace HotelReservation
 {
     public partial class FormAddReservation : Form
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
-        BookingService bookingService = new BookingService(connectionString);
-        UserRepository userRepository = new UserRepository(connectionString);
-        BookingRepository bookingRepository = new BookingRepository(connectionString);
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationEF"].ConnectionString;
+        BookingService bookingService = new BookingService();
+        BookedDatesService bookedDatesService = new BookedDatesService(); 
         int roomId;
         public FormAddReservation()
         {
@@ -37,9 +36,20 @@ namespace HotelReservation
 
         private void FormAddReservation_Shown(object sender, EventArgs e)
         {
-            monthCalendarBookedDays.BoldedDates = bookingService.GetAllBookedDays(roomId).ToArray();
+            var bookings = new List<Booking>();
+            using (var context = ContextResolver.GetContext(connectionString))
+            {
+                BookingService bookingService = new BookingService(context);
+                bookings = bookingService.GetAllByRoomId(roomId);
+            }
+            monthCalendarBookedDays.BoldedDates = bookedDatesService.GetAllBookedDays(bookings).ToArray();
             listViewUsers.Items.Clear();
-            var allUsers = userRepository.GetAllUsers();
+            var allUsers = new List<User>();
+            using (var context = ContextResolver.GetContext(connectionString))
+            {
+                UserService userService = new UserService(context);
+                allUsers = userService.GetAll();
+            }
             foreach (var user in allUsers)
             {
                 ListViewItem listViewUserRecord = new ListViewItem(user.Id.ToString());
@@ -56,7 +66,14 @@ namespace HotelReservation
             {
                 if (ValidationService.ValidateBookingDates(dateTimePickerStart.Value, dateTimePickerEnd.Value))
                 {
-                    if (bookingService.CheckIsBookedDates(dateTimePickerStart.Value, dateTimePickerEnd.Value))
+                    var bookedDates = new List<DateTime>();
+                    using (var context = ContextResolver.GetContext(connectionString))
+                    {
+                        BookingService bookingService = new BookingService(context);
+                        bookedDates = bookedDatesService.GetAllBookedDays(bookingService.GetAllByRoomId(roomId));
+                    }
+
+                    if (bookedDatesService.CheckIsBookedDates(dateTimePickerStart.Value, dateTimePickerEnd.Value,bookedDates))
                     {
 
                         ListViewItem item = listViewUsers.SelectedItems[0];
@@ -67,7 +84,11 @@ namespace HotelReservation
                             UserId = Convert.ToInt32(item.Text),
                             RoomId = roomId
                         };
-                        bookingRepository.AddBooking(booking);
+                        using (var context = ContextResolver.GetContext(connectionString))
+                        {
+                            BookingService bookingService = new BookingService(context);
+                            bookingService.Add(booking);
+                        }
                         MessageBox.Show("New record has added");
                         this.Close();
                     }
@@ -94,7 +115,11 @@ namespace HotelReservation
             if (listViewUsers.SelectedItems.Count != 0)
             {
                 ListViewItem item = listViewUsers.SelectedItems[0];
-                bookingRepository.CancelBooking(item.Text);
+                using (var context = ContextResolver.GetContext(connectionString))
+                {
+                    BookingService bookingService = new BookingService(context);
+                    bookingService.Delete(Convert.ToInt32(item.Text));
+                }
                 MessageBox.Show("The reservation has been canceled");
                 this.Close();
             }

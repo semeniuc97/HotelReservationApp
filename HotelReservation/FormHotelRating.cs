@@ -1,5 +1,6 @@
 ﻿using BusinessAccessLayer.Services;
 using DataAccessLayer;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +16,7 @@ namespace HotelReservation
 {
     public partial class FormHotelRating : Form
     {
-        BookingRepository bookingRepository = new BookingRepository(connectionString);
-        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationEF"].ConnectionString;
         public FormHotelRating()
         {
             InitializeComponent();
@@ -35,8 +35,17 @@ namespace HotelReservation
             if (ValidationService.ValidateRatingBookingDates(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value))
             {
 
-                var roomBookings = bookingRepository.GetRoomBookingsByDatesRange(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value);
-                foreach (var item in roomBookings)
+                var roomsBookings = new List<Booking>();
+                var roomsRating = new List<RoomBookings>();
+                using (var context = ContextResolver.GetContext(connectionString))
+                {
+                    BookingService bookingService = new BookingService(context);
+                    roomsBookings = bookingService.GetRoomReservationsByDatesRange(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value);
+                    RoomsRatingService roomsRatingService = new RoomsRatingService();
+                    roomsRating = roomsRatingService.GetRoomBookingsRating(roomsBookings);
+                }
+                
+                foreach (var item in roomsRating)
                 {
                     ListViewItem viewItem = new ListViewItem(item.CountBookings.ToString());
                     viewItem.SubItems.Add(item.RoomNumber.ToString());

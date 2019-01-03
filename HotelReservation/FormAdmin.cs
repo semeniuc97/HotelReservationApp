@@ -10,13 +10,14 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using DataAccessLayer;
 using System.Configuration;
+using Models;
+using BusinessAccessLayer.Services;
 
 namespace HotelReservation
 {
     public partial class FormAdmin : Form
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
-        HotelRepository hotelRepository = new HotelRepository(connectionString);
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationEF"].ConnectionString;
         public FormAdmin()
         {
             InitializeComponent();
@@ -37,8 +38,14 @@ namespace HotelReservation
         private void GetAllHotels()
         {
                 listViewHotels.Items.Clear();
-            var HotelsList = hotelRepository.GetHotels();
-            foreach(var hotel in HotelsList)
+            var hotels = new List<Hotel>();
+            using (var context = ContextResolver.GetContext(connectionString))
+            {
+                HotelService hotelService = new HotelService(context);
+                hotels = hotelService.GetAll();
+            }
+            
+            foreach(var hotel in hotels)
             {
                 ListViewItem listViewItem = new ListViewItem(hotel.Id.ToString());
                 listViewItem.SubItems.Add(hotel.HotelName);

@@ -1,64 +1,54 @@
 ﻿using DataAccessLayer;
+using DataAccessLayer.Context;
+using Microsoft.EntityFrameworkCore;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace BusinessAccessLayer.Services
 {
     public class BookingService
     {
-        BookingRepository bookingRepository;
-        public List<DateTime> bookedDates = new List<DateTime>();
+        HotelContext hotelContext;
         public BookingService()
         {
 
         }
-        public BookingService(string connectionString)
+
+        public BookingService(HotelContext hotelContext)
         {
-            bookingRepository = new BookingRepository(connectionString);
+            this.hotelContext = hotelContext;
         }
 
-        public virtual List<DateTime> GetAllBookedDays(int roomId)
+        public Booking Delete(int id)
         {
-            var roomBookingsPeriods = bookingRepository.GetBookingsDatePeriods(roomId);
-            //var roomAllBookedDays = new List<DateTime>();
-            foreach (var booking in roomBookingsPeriods)
-            {
-                bookedDates.AddRange(GetBookingDatesRange(booking.StartDate, booking.EndDate));
-            }
-            return bookedDates;
+            var booking = new Booking() { Id = id };
+            hotelContext.Entry(booking).State = EntityState.Deleted;
+            hotelContext.SaveChanges();
+            return booking;
         }
 
-        public virtual bool CheckIsBookedDates(DateTime StartDate, DateTime EndDate)
+        public Booking Add(Booking booking)
         {
-            if (bookedDates.Contains(StartDate) || bookedDates.Contains(EndDate))
-            {
-                return false;
-            }
-            else
-                return true;
+            hotelContext.Bookings.Add(booking);
+            hotelContext.SaveChanges();
+            return booking;
         }
 
-        public virtual List<DateTime> GetBookingDatesRange(DateTime StartDate, DateTime EndDate)
+        public List<Booking> GetAllByRoomId(int roomId)
         {
-            var bookedDate = StartDate;
-            var bookedDates = new List<DateTime>()
-            {
-                StartDate,
-                EndDate
-            };
-
-            if ((EndDate.Date - bookedDate.Date).TotalDays == 1)
-            {
-                return bookedDates;
-            }
-
-            while ((EndDate.Date - bookedDate.Date).TotalDays != 1)
-            {
-                bookedDate = bookedDate.AddDays(1);
-                bookedDates.Add(bookedDate);
-            }
-            return bookedDates;
+            return hotelContext.Bookings.Include(x => x.User).Include(x => x.Room).Where(x => x.RoomId == roomId).ToList();
         }
+
+        public List<Booking> GetRoomReservationsByDatesRange(DateTime StartDate, DateTime EndDate)
+        {
+            return hotelContext.Bookings
+                .Include(x => x.Room.Hotel)
+                .Where(x => x.StartDate >= StartDate && x.EndDate <= EndDate).ToList();
+        }
+
+        
     }
 }

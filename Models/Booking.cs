@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models
 {
-    public class Booking
+    public class Booking:ModifyTracker
     {
 
         public int Id { get; set; }
@@ -14,7 +14,7 @@ namespace Models
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
         public int RoomId { get; set; }
     }
 }

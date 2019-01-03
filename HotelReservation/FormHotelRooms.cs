@@ -1,4 +1,5 @@
-﻿using DataAccessLayer;
+﻿using BusinessAccessLayer.Services;
+using DataAccessLayer;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,7 @@ namespace HotelReservation
 {
     public partial class FormHotelRooms : Form
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
-        RoomRepository roomRepository = new RoomRepository(connectionString);
-        BookingRepository bookingRepository = new BookingRepository(connectionString);
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationEF"].ConnectionString;
         ListViewItem item = new ListViewItem();
         private int hotelId;
 
@@ -76,8 +75,13 @@ namespace HotelReservation
         private void GetAllRooms()
         {
                 listViewHotelRooms.Items.Clear();
-            var hotelRooms = roomRepository.GetRoomsByHotelId(hotelId);
-            foreach(var room in hotelRooms)
+            var hotelRooms = new List<Room>();
+            using (var context = ContextResolver.GetContext(connectionString))
+            {
+                var roomService = new RoomService(context);
+                hotelRooms = roomService.GetAllByHotelId(hotelId);
+            }
+            foreach (var room in hotelRooms)
             {
                 ListViewItem listViewItem = new ListViewItem(room.Id.ToString());
                 listViewItem.SubItems.Add(room.Number.ToString());
@@ -109,15 +113,20 @@ namespace HotelReservation
             if (listViewHotelRooms.SelectedItems.Count != 0)
             {
                 int roomId = Convert.ToInt32(item.Text);
-                var roomBookings = bookingRepository.GetBookingsDetailsByRoomId(roomId);
+                var roomBookings = new List<Booking>();
+                using (var context = ContextResolver.GetContext(connectionString))
+                {
+                    BookingService bookingService = new BookingService(context);
+                    roomBookings = bookingService.GetAllByRoomId(roomId);
+                }
                 foreach(var booking in roomBookings)
                 {
                     ListViewItem listViewItem = new ListViewItem(booking.Id.ToString());
-                    listViewItem.SubItems.Add(booking.UserName);
-                    listViewItem.SubItems.Add(booking.Price.ToString());
+                    listViewItem.SubItems.Add(booking.User.UserName);
+                    listViewItem.SubItems.Add(booking.Room.Price.ToString());
                     listViewItem.SubItems.Add(booking.StartDate.ToShortDateString());
                     listViewItem.SubItems.Add(booking.EndDate.ToShortDateString());
-                    listViewItem.SubItems.Add(booking.Email);
+                    listViewItem.SubItems.Add(booking.User.Email);
                     listViewRoomReservation.Items.Add(listViewItem);               
                 }
             }
@@ -128,7 +137,11 @@ namespace HotelReservation
             if (listViewRoomReservation.SelectedItems.Count != 0)
             {
                 ListViewItem item = listViewRoomReservation.SelectedItems[0];
-                bookingRepository.CancelBooking(item.Text);
+                using (var context = ContextResolver.GetContext(connectionString))
+                {
+                    BookingService bookingService = new BookingService(context);
+                    bookingService.Delete(Convert.ToInt32(item.Text));
+                }
                 MessageBox.Show("The reservation has been canceled");
             }
             else

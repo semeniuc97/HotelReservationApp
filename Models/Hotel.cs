@@ -4,17 +4,15 @@ using System.Text;
 
 namespace Models
 {
-    public class Hotel
+    public class Hotel:ModifyTracker
     {
         public int Id { get; set; }
         public string HotelName { get; set; }
         public DateTime FoundationYear { get; set; }
         public string Adress { get; set; }
         public bool IsActive { get; set; }
-        public DateTime? UpdateDate { get; set; }
-        public DateTime? CreateDate { get; set; }
 
-        public ICollection<Room> Rooms { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
 
 
     }

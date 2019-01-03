@@ -17,8 +17,8 @@ namespace HotelReservation
 {
     public partial class FormManageHotels : Form
     {
-        //static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
-        //HotelRepository hotelRepository = new HotelRepository(connectionString);
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationEF"].ConnectionString;
+       
         public FormManageHotels()
         {
             InitializeComponent();
@@ -44,15 +44,14 @@ namespace HotelReservation
             buttonUpdate.Enabled = true;
             comboBoxIsActive.Enabled = true;
 
-            //int num;
-            //bool isNumeric = int.TryParse(textBoxFyndById.Text, out num);
+       
             if (ValidationService.ValidateIsNumber(textBoxFyndById.Text))
             {
                 var hotel = new Hotel();
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var hotelService = new HotelService(context);
-                    hotel = hotelService.FindHotel(Convert.ToInt32(textBoxFyndById.Text));
+                    hotel = hotelService.Find(Convert.ToInt32(textBoxFyndById.Text));
                 }
 
                 textBoxHotelName.Text = hotel.HotelName;
@@ -77,14 +76,14 @@ namespace HotelReservation
                     Adress = textBoxAdress.Text,
                     FoundationYear = dateTimePickerFYear.Value,
                     IsActive = Convert.ToBoolean(comboBoxIsActive.Text),
-                    CreateDate= DateTime.Now
+                    Created= DateTime.Now
                     
                 };
 
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var hotelService = new HotelService(context);
-                    hotelService.AddHotel(hotel);
+                    hotelService.Add(hotel);
                 }
                     MessageBox.Show("New record has been added");
                 this.Close();
@@ -103,10 +102,10 @@ namespace HotelReservation
         {
             if (ValidationService.ValidateIsNumber(textBoxAdress.Text))
             {
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var hotelService = new HotelService(context);
-                    hotelService.DeleteHotel(Convert.ToInt16(textBoxAdress.Text));
+                    hotelService.Delete(Convert.ToInt16(textBoxAdress.Text));
                 }
                 MessageBox.Show("The record has been deleted!");
                 this.Close();
@@ -132,13 +131,13 @@ namespace HotelReservation
                     Adress = textBoxAdress.Text,
                     FoundationYear = dateTimePickerFYear.Value,
                     IsActive = Convert.ToBoolean(comboBoxIsActive.Text),
-                    UpdateDate=DateTime.Now
+                    Modified=DateTime.Now
                 };
 
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var hotelService = new HotelService(context);
-                    hotelService.UpdateHotel(hotel);
+                    hotelService.Update(hotel);
                 }
                 MessageBox.Show("The record has been updated!");
                 this.Close();

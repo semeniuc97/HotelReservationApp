@@ -44,12 +44,14 @@
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.comboBoxComfortLvl = new System.Windows.Forms.ComboBox();
             this.labelValidationMessage = new System.Windows.Forms.Label();
+            this.textBoxId = new System.Windows.Forms.TextBox();
+            this.labelId = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonAdd
             // 
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAdd.Location = new System.Drawing.Point(105, 249);
+            this.buttonAdd.Location = new System.Drawing.Point(102, 285);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(81, 45);
@@ -61,7 +63,7 @@
             // buttonUpdate
             // 
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonUpdate.Location = new System.Drawing.Point(199, 167);
+            this.buttonUpdate.Location = new System.Drawing.Point(196, 203);
             this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(81, 45);
@@ -73,7 +75,7 @@
             // buttonFind
             // 
             this.buttonFind.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonFind.Location = new System.Drawing.Point(16, 167);
+            this.buttonFind.Location = new System.Drawing.Point(13, 203);
             this.buttonFind.Margin = new System.Windows.Forms.Padding(2);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(81, 45);
@@ -85,7 +87,7 @@
             // labelNumber
             // 
             this.labelNumber.AutoSize = true;
-            this.labelNumber.Location = new System.Drawing.Point(15, 22);
+            this.labelNumber.Location = new System.Drawing.Point(12, 58);
             this.labelNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNumber.Name = "labelNumber";
             this.labelNumber.Size = new System.Drawing.Size(44, 13);
@@ -94,17 +96,16 @@
             // 
             // textBoxNumber
             // 
-            this.textBoxNumber.Location = new System.Drawing.Point(128, 22);
+            this.textBoxNumber.Location = new System.Drawing.Point(125, 58);
             this.textBoxNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNumber.Name = "textBoxNumber";
             this.textBoxNumber.Size = new System.Drawing.Size(145, 20);
             this.textBoxNumber.TabIndex = 26;
-            this.textBoxNumber.TextChanged += new System.EventHandler(this.textBoxNumber_TextChanged);
             // 
             // buttonDelete
             // 
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDelete.Location = new System.Drawing.Point(105, 167);
+            this.buttonDelete.Location = new System.Drawing.Point(102, 203);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(81, 45);
@@ -116,7 +117,7 @@
             // radioButtonAdd
             // 
             this.radioButtonAdd.AutoSize = true;
-            this.radioButtonAdd.Location = new System.Drawing.Point(216, 227);
+            this.radioButtonAdd.Location = new System.Drawing.Point(213, 263);
             this.radioButtonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonAdd.Name = "radioButtonAdd";
             this.radioButtonAdd.Size = new System.Drawing.Size(44, 17);
@@ -129,7 +130,7 @@
             // radioButtonUpdate
             // 
             this.radioButtonUpdate.AutoSize = true;
-            this.radioButtonUpdate.Location = new System.Drawing.Point(120, 227);
+            this.radioButtonUpdate.Location = new System.Drawing.Point(117, 263);
             this.radioButtonUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonUpdate.Name = "radioButtonUpdate";
             this.radioButtonUpdate.Size = new System.Drawing.Size(60, 17);
@@ -142,7 +143,7 @@
             // radioButtonDelete
             // 
             this.radioButtonDelete.AutoSize = true;
-            this.radioButtonDelete.Location = new System.Drawing.Point(18, 227);
+            this.radioButtonDelete.Location = new System.Drawing.Point(15, 263);
             this.radioButtonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonDelete.Name = "radioButtonDelete";
             this.radioButtonDelete.Size = new System.Drawing.Size(56, 17);
@@ -155,7 +156,7 @@
             // labelCapability
             // 
             this.labelCapability.AutoSize = true;
-            this.labelCapability.Location = new System.Drawing.Point(15, 97);
+            this.labelCapability.Location = new System.Drawing.Point(12, 133);
             this.labelCapability.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCapability.Name = "labelCapability";
             this.labelCapability.Size = new System.Drawing.Size(52, 13);
@@ -165,7 +166,7 @@
             // labelComfortLvl
             // 
             this.labelComfortLvl.AutoSize = true;
-            this.labelComfortLvl.Location = new System.Drawing.Point(15, 139);
+            this.labelComfortLvl.Location = new System.Drawing.Point(12, 175);
             this.labelComfortLvl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelComfortLvl.Name = "labelComfortLvl";
             this.labelComfortLvl.Size = new System.Drawing.Size(69, 13);
@@ -176,7 +177,7 @@
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(14, 57);
+            this.labelPrice.Location = new System.Drawing.Point(11, 93);
             this.labelPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(31, 13);
@@ -185,7 +186,7 @@
             // 
             // textBoxCapability
             // 
-            this.textBoxCapability.Location = new System.Drawing.Point(128, 97);
+            this.textBoxCapability.Location = new System.Drawing.Point(125, 133);
             this.textBoxCapability.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCapability.Name = "textBoxCapability";
             this.textBoxCapability.Size = new System.Drawing.Size(145, 20);
@@ -193,7 +194,7 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(128, 57);
+            this.textBoxPrice.Location = new System.Drawing.Point(125, 93);
             this.textBoxPrice.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(145, 20);
@@ -206,7 +207,7 @@
             "1",
             "2",
             "3"});
-            this.comboBoxComfortLvl.Location = new System.Drawing.Point(128, 136);
+            this.comboBoxComfortLvl.Location = new System.Drawing.Point(125, 172);
             this.comboBoxComfortLvl.Name = "comboBoxComfortLvl";
             this.comboBoxComfortLvl.Size = new System.Drawing.Size(145, 21);
             this.comboBoxComfortLvl.TabIndex = 31;
@@ -217,19 +218,40 @@
             this.labelValidationMessage.AutoSize = true;
             this.labelValidationMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidationMessage.ForeColor = System.Drawing.Color.Red;
-            this.labelValidationMessage.Location = new System.Drawing.Point(114, 5);
+            this.labelValidationMessage.Location = new System.Drawing.Point(122, 5);
             this.labelValidationMessage.Name = "labelValidationMessage";
             this.labelValidationMessage.Size = new System.Drawing.Size(166, 15);
             this.labelValidationMessage.TabIndex = 35;
             this.labelValidationMessage.Text = "Incorrect data!Write another...";
             this.labelValidationMessage.Visible = false;
             // 
+            // textBoxId
+            // 
+            this.textBoxId.Location = new System.Drawing.Point(125, 22);
+            this.textBoxId.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.Size = new System.Drawing.Size(145, 20);
+            this.textBoxId.TabIndex = 36;
+            this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
+            // 
+            // labelId
+            // 
+            this.labelId.AutoSize = true;
+            this.labelId.Location = new System.Drawing.Point(12, 22);
+            this.labelId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(16, 13);
+            this.labelId.TabIndex = 37;
+            this.labelId.Text = "Id";
+            // 
             // FormManageRooms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(289, 303);
+            this.ClientSize = new System.Drawing.Size(289, 335);
+            this.Controls.Add(this.labelId);
+            this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.labelValidationMessage);
             this.Controls.Add(this.comboBoxComfortLvl);
             this.Controls.Add(this.buttonAdd);
@@ -275,5 +297,7 @@
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.ComboBox comboBoxComfortLvl;
         private System.Windows.Forms.Label labelValidationMessage;
+        private System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.Label labelId;
     }
 }

@@ -17,8 +17,7 @@ namespace HotelReservation
 {
     public partial class FormManageRooms : Form
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationConStr"].ConnectionString;
-        RoomRepository roomRepository = new RoomRepository(connectionString);
+        static string connectionString = ConfigurationManager.ConnectionStrings["HotelReservationEF"].ConnectionString;
         private int hotelId;
 
         public int HotelId
@@ -53,13 +52,13 @@ namespace HotelReservation
                     Capability = Convert.ToInt16(textBoxCapability.Text),
                     ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
                     HotelId = Convert.ToInt32(hotelId.ToString()),
-                    AddDate = DateTime.Now
+                    Created = DateTime.Now
 
                 };
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var roomService = new RoomService(context);
-                    roomService.AddRoom(newRoom);
+                    roomService.Add(newRoom);
                 }
                 MessageBox.Show("New record has added");
                 this.Close();
@@ -78,11 +77,10 @@ namespace HotelReservation
             if (ValidationService.ValidateIsNumber(textBoxCapability.Text))
             {
 
-                roomRepository.DeleteRoomById(textBoxCapability.Text);
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var roomService = new RoomService(context);
-                    roomService.DeleteRoom(Convert.ToInt32(textBoxCapability.Text));
+                    roomService.Delete(Convert.ToInt32(textBoxCapability.Text));
                 }
                 MessageBox.Show("The record has been deleted!");
                 this.Close();
@@ -99,17 +97,19 @@ namespace HotelReservation
             {
                 var room = new Room()
                 {
+                    Id= Convert.ToInt32(textBoxId.Text),
                     Number = Convert.ToInt32(textBoxNumber.Text),
                     Price = Convert.ToDouble(textBoxPrice.Text),
                     Capability = Convert.ToInt16(textBoxCapability.Text),
                     ComfortLevel = Convert.ToInt16(comboBoxComfortLvl.Text),
-                    UpdateDate = DateTime.Now
+                    HotelId = hotelId,
+                    Modified = DateTime.Now
 
                 };
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var roomService = new RoomService(context);
-                    roomService.UpdateRoom(room);
+                    roomService.Update(room);
                 }
                 MessageBox.Show("The record has been updated!");
                 this.Close();
@@ -118,31 +118,29 @@ namespace HotelReservation
                 labelValidationMessage.Visible = true;
         }
 
-        private void textBoxNumber_TextChanged(object sender, EventArgs e)
-        {
-            buttonFind.Enabled = true;
-        }
 
         private void buttonFind_Click(object sender, EventArgs e)
         {
 
-            if (ValidationService.ValidateIsNumber(textBoxNumber.Text))
+            if (ValidationService.ValidateIsNumber(textBoxId.Text))
             {
                 textBoxPrice.ReadOnly = false;
                 textBoxCapability.ReadOnly = false;
                 comboBoxComfortLvl.Enabled = true;
                 buttonUpdate.Enabled = true;
+                textBoxNumber.Enabled = true;
 
                 var room = new Room();
-                using (var context = ContextResolver.GetContext())
+                using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var roomService = new RoomService(context);
-                    room = roomService.FindRoomByRoomNumber(Convert.ToInt32(textBoxNumber.Text));
+                    room = roomService.FindById(Convert.ToInt32(textBoxId.Text));
                 }
-
+                textBoxId.Text = room.Id.ToString();
                 textBoxPrice.Text = room.Price.ToString();
                 textBoxCapability.Text = room.Capability.ToString();
                 comboBoxComfortLvl.Text = room.ComfortLevel.ToString();
+                textBoxNumber.Text = room.Number.ToString();
 
             }
             else
@@ -163,6 +161,8 @@ namespace HotelReservation
 
         private void radioButtonDelete_CheckedChanged(object sender, EventArgs e)
         {
+            labelId.Visible = false;
+            textBoxId.Visible = false;
             labelNumber.Visible = false;
             textBoxNumber.Visible = false;
             labelPrice.Visible = false;
@@ -179,6 +179,8 @@ namespace HotelReservation
 
         private void radioButtonUpdate_CheckedChanged(object sender, EventArgs e)
         {
+            labelId.Visible = true;
+            textBoxId.Visible = true;
             labelNumber.Visible = true;
             textBoxNumber.Visible = true;
             labelPrice.Visible = true;
@@ -195,10 +197,14 @@ namespace HotelReservation
             comboBoxComfortLvl.Enabled = false;
             buttonUpdate.Enabled = false;
             buttonFind.Enabled = false;
+            textBoxNumber.Enabled = false;
+            
         }
 
         private void radioButtonAdd_CheckedChanged(object sender, EventArgs e)
         {
+            labelId.Visible = false;
+            textBoxId.Visible = false;
             textBoxPrice.ReadOnly = false;
             textBoxCapability.ReadOnly = false;
             comboBoxComfortLvl.Enabled = true;
@@ -213,9 +219,14 @@ namespace HotelReservation
             buttonUpdate.Visible = false;
             buttonDelete.Visible = false;
             buttonAdd.Visible = true;
-            buttonAdd.Location = new Point(130, 164);
+            buttonAdd.Location = new Point(130, 204);
             labelCapability.Text = "Capability";
+            textBoxId.Enabled = true;
+        }
 
+        private void textBoxId_TextChanged(object sender, EventArgs e)
+        {
+            buttonFind.Enabled = true;
         }
     }
 }
