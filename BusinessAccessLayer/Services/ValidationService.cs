@@ -1,47 +1,39 @@
-﻿using System;
+﻿using BusinessAccessLayer.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace BusinessAccessLayer.Services
 {
-    public static class ValidationService
+    public  class ValidationService:IValidationService
     {
-        public static bool ValidateHotelName(string word)
+        public  bool ValidateHotelName(string word)
         {
             Match match = Regex.Match(word, "[a-zA-Z]{3,}");
-            if (match.Success)
-            {
-                return true;
-            }
-            else
-                return false;
+
+            return match.Success;
         }
-        public static bool ValidateIsNumber(string word)
+
+        public  bool ValidateIsNumber(string word)
         {
             Match match = Regex.Match(word, "[0-9]{1,}");
-            if (match.Success)
-            {
-                return true;
-            }
-            else
-                return false;
+
+            return match.Success;
         }
-        public static bool ValidateIsPrice(string word)
+
+        public bool ValidateIsPrice(string word)
         {
             Match match = Regex.Match(word, @"-?\d+(?:\.\d+)?");
-            if (match.Success)
-            {
-                return true;
-            }
-            else
-                return false;
+
+            return match.Success;
         }
-        public static bool ValidateBookingDates(DateTime StartDate, DateTime EndDate)
+
+        public bool ValidateBookingDates(DateTime StartDate, DateTime EndDate)
         {
             if (StartDate > DateTime.Now && EndDate > DateTime.Now)
             {
-                if (EndDate > StartDate)    
+                if (EndDate > StartDate)
                     return true;
                 else
                     return false;
@@ -49,13 +41,14 @@ namespace BusinessAccessLayer.Services
             else
                 return false;
         }
-        public static bool ValidateFoundationYear(DateTime foundationYear)
+
+        public bool ValidateFoundationYear(DateTime foundationYear)
         {
             return (foundationYear > DateTime.Now) ? false : true;
-           
+
         }
 
-        public static bool ValidateRatingBookingDates(DateTime StartDate, DateTime EndDate)
+        public bool ValidateRatingBookingDates(DateTime StartDate, DateTime EndDate)
         {
             return EndDate > StartDate ? true : false;
 

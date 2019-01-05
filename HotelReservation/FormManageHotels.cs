@@ -51,7 +51,7 @@ namespace HotelReservation
                 using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var hotelService = new HotelService(context);
-                    hotel = hotelService.Find(Convert.ToInt32(textBoxFyndById.Text));
+                    hotel = hotelService.Get(Convert.ToInt32(textBoxFyndById.Text));
                 }
 
                 textBoxHotelName.Text = hotel.HotelName;

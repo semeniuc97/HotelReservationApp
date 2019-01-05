@@ -134,7 +134,7 @@ namespace HotelReservation
                 using (var context = ContextResolver.GetContext(connectionString))
                 {
                     var roomService = new RoomService(context);
-                    room = roomService.FindById(Convert.ToInt32(textBoxId.Text));
+                    room = roomService.GetById(Convert.ToInt32(textBoxId.Text));
                 }
                 textBoxId.Text = room.Id.ToString();
                 textBoxPrice.Text = room.Price.ToString();
